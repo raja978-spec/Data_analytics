@@ -273,10 +273,54 @@ g    g         5
 
 # counts no of occurence of each value in this column
 s7=df['attempts'].value_counts()
+ 
+                      T
+
+import pandas as pd
+
+state_cap = pd.Series({'kar':1,'andra':2,'tn':3})
+state_lan = pd.Series({'kar':1,'andra':2,'tz':3})
+
+data = pd.DataFrame({'capitals':state_cap,'lang':state_lan})
+print(data)
+print(data.T) # changes row wise data to column wise
+
+OUTPUT:
+       capitals  lang
+andra       2.0   2.0
+kar         1.0   1.0
+tn          3.0   NaN
+tz          NaN   3.0
+          andra  kar   tn   tz
+capitals    2.0  1.0  3.0  NaN
+lang        2.0  1.0  NaN  3.0
+
+      
+                      VALUES
+            
+import pandas as pd
+
+state_cap = pd.Series({'kar':1,'andra':2,'tn':3})
+state_lan = pd.Series({'kar':1,'andra':2,'tn':3})
+
+data = pd.DataFrame({'capitals':state_cap,'lang':state_lan})
+print(data)
+print(data.values) # returns all row values as list
+
+OUTPUT:
+       capitals  lang
+kar           1     1
+andra         2     2
+tn            3     3
+[[1 1]
+ [2 2]
+ [3 3]]
+
 
 '''
- 
 #                   INDEX
+
+
 '''
 import pandas as pd
 
@@ -327,35 +371,359 @@ Index([2, 3, 7, 78], dtype='int64')
 print(pd.to_numeric(df['score']))
 '''
 
+#                    DATA INDEXING SELECTION
+'''
+ It means the accessing and modifying the values 
+
+ Series Indexing
+
+import pandas as pd
+data = pd.Series([10,20,20], index=['A','B','C'])
+print(data['A'])  #Accesing the item with index
+print(data.keys())
+print(list(data.items())) # returns iterable value pair index,value
+data['A'] = 45
+print(data)
+
+OUTPUT:
+
+10
+Index(['A', 'B', 'C'], dtype='object')
+[('A', 10), ('B', 20), ('C', 20)]
+A    45
+B    20
+C    20
+dtype: int64
 
 
-import numpy as np
+OUTPUT:
+A    10
+B    20
+C    30
+D    40
+dtype: int64
+A    10
+B    20
+C    30
+dtype: int64
+
+
+import pandas as pd
+data = pd.Series([10,20,30,40], index=['A','B','C','D'])
+print(data['A':'D']) # Explicit index included D
+print(data[0:3]) # implicit index excludes 3th index that is D
+print(data[(data>20) & (data<40)]) # conditional indexing
+print(data[['A','D']])
+
+
+OUTPUT:
+
+A    10
+B    20
+C    30
+D    40
+dtype: int64
+A    10
+B    20
+C    30
+dtype: int64
+C    30
+dtype: int64
+A    10
+D    40
+dtype: int64
+'''
+
+#          LOC, ILOC
+'''
+
+             SERIES
+
+import pandas as pd
+data = pd.Series([10,20,30,40], index=[1,2,3,4])
+print(data[1]) # uses explicit index
+
+# But when we do slicing program get consfuse and
+# it uses default implicit index for slice
+print(data[1:3])
+
+OUTPUT:
+10
+2    20
+3    30
+
+Because of this confusion loc comes in, it uses
+explicit index for slice
+
+
+import pandas as pd
+data = pd.Series([10,20,30,40], index=[1,2,3,4])
+print(data.loc[1]) # uses explicit index
+
+# But when we do slicing program get consfuse and
+# it uses default implicit index for slice
+print(data.loc[1:3])
+
+
+OUTPUT:
+
+10
+1    10
+2    20
+3    30
+dtype: int64
+
+
+What if we want to slice using implicit on both
+single item, here iloc is used, it will throw
+IndexError if the item is not found
+
+
+import pandas as pd
+data = pd.Series([10,20,30,40], index=[1,2,3,4])
+ # uses implicit index
+print(data.iloc[1])
+print(data[1])
+print(data.iloc[1:3])
+
+OUTPUT:
+20
+10
+2    20
+3    30
+dtype: int64
+
+
+                    DF IMPLICIT AND EXPLICIT SLICING  
+
 import pandas as pd
 
-s1 = pd.Series(np.linspace(1, 10, np.random.randint(1, 10)))
-s2 = pd.Series([f'hello {i**2}' for i in range(5)], index=['a', 'b', 'c', 'd', 'e'])
-s3 = pd.Series({"India":'ND',"JP":"TK",'UK':"LOD"})
-#print(s3.index, s3.values)
-keys = ['a','b','c','d','e','f','g','h','i','j']
-s4 = pd.Series([i for i in range(10)], index=keys)
-# print(s4.shape, s4.size)
-# print(s4[4::3], s4[::-1], s4[::2])
-L= s4.tolist()
-#print(L)
-exam_data = {
-    'name':['a','b','c','d','e','f','g'],
-    'score':[10,20,np.nan,40,50,np.nan,70],
-    'attempts':[1,3,4,5,6,7,5],
-    'qualify':['s','n','s','s','s','n','n']
-}
-labels = ['a','b','c','b','e','f','g']
-df =pd.DataFrame(exam_data,index=labels)
-# counts no of occurence of each value in this column
-s7=df['attempts'].value_counts()
-print(s7)
-# Seperate NAN
-# 12
-#13
-#14
-# print(df['score'].max(), df['attempts'].min())
-# print(pd.to_numeric())
+state_cap = pd.Series({'kar':1,'andra':2,'tn':3})
+state_lan = pd.Series({'kar':1,'andra':2,'tn':3})
+
+#data = pd.DataFrame({'capitals':state_cap,'lang':state_lan})
+data = pd.DataFrame({'col1':[1,2,3],'col2':[4,5,6], 'col3':[7,8,9]}, index=['row1','row2', 'row3'])
+print(data)
+
+NOTE: implict slicing for Series works on column
+      But here it applies on row
+
+print(data[0:2]) # slices the data row-wise, uses implict so the 
+                # last index will be excluded.
+print(data['row1':'row3']) # this uses explicit index to it includes
+                           # last row
+
+OUTPUT:
+      col1  col2  col3
+row1     1     4     7
+row2     2     5     8
+row3     3     6     9
+
+      col1  col2  col3
+row1     1     4     7
+row2     2     5     8
+
+      col1  col2  col3
+row1     1     4     7
+row2     2     5     8
+row3     3     6     9
+
+
+                 DF LOC, ILOC, IX
+
+ 1. Loc - in df loc it access group of rows and columns b labels
+          it single label, array of labels
+
+ 2. iloc - purely index based 
+
+ 3. ix - combination of implicit and explicit accessing. but it is
+         deprecated
+
+
+EXAMPLE FOR LOC:
+
+import pandas as pd
+data = pd.DataFrame({'col1':[1,2,3],'col2':[4,5,6], 'col3':[7,8,9]}, index=[1,2,3])
+print(data[1:3])
+print(data.loc[1:3])
+
+
+OUTPUT:
+
+   col1  col2  col3
+2     2     5     8
+3     3     6     9
+
+   col1  col2  col3
+1     1     4     7
+2     2     5     8
+3     3     6     9
+
+
+import pandas as pd
+data = pd.DataFrame(
+    {'col1':[1,2,3],'col2':[4,5,6], 
+    'col3':[7,8,9]}, 
+    index=['row1','row2','row3'])
+print(data)
+print(data.loc['row2':,'col2':])
+
+OUTPUT:
+
+      col1  col2  col3
+row1     1     4     7
+row2     2     5     8
+row3     3     6     9
+
+      col2  col3
+row2     5     8
+row3     6     9
+ 
+            
+             EXAMPLE FOR ILOC:
+
+import pandas as pd
+data = pd.DataFrame({'col1':[1,2,3],'col2':[4,5,6], 'col3':[7,8,9]}, index=[1,2,3])
+print(data)
+print(data.iloc[:3,0:2]) # iloc[row_index,col_index]
+
+
+OUTPUT:
+
+   col1  col2  col3
+1     1     4     7
+2     2     5     8
+3     3     6     9
+
+   col1  col2
+1     1     4
+2     2     5
+3     3     6
+
+
+               EXAMPLE FOR IX 
+
+import pandas as pd
+data = pd.DataFrame(
+    {'col1':[1,2,3],'col2':[4,5,6], 
+    'col3':[7,8,9]}, 
+    index=['row1','row2','row3'])
+print(data)
+print(data.ix['row2':,2:])
+
+
+                CONDITIONAL LOC INDEXING
+
+
+import pandas as pd
+data = pd.DataFrame(
+    {'col1':[1,2,3],'col2':[4,5,6], 
+    'col3':[7,8,9]}, 
+    index=['row1','row2','row3'])
+print(data)
+
+# In the below code, the condition
+# data['col1']>1 is applied on col1
+# it selects the condition applied data
+# and selects the col3 with this
+
+print(data.loc[data['col1']>1,['col3','col1']])
+
+OUTPUT:
+
+      col1  col2  col3
+row1     1     4     7
+row2     2     5     8
+row3     3     6     9
+
+# we have not specify condition for col3, all the
+# values of cal3 will not be selected it will does 
+# reductions on dim to the condition applied
+# for col1
+
+      col3  col1
+row2     8     2
+row3     9     3
+
+
+                    #  MODIFYING VALUES WITH ILOC, LOC
+
+import pandas as pd
+data = pd.DataFrame(
+    {'col1':[1,2,3],'col2':[4,5,6], 
+    'col3':[7,8,9]}, 
+    index=['row1','row2','row3'])
+print(data)
+print(data.iloc[:1,:1])
+print(data.loc['row2':'row2','col2':'col2'])
+data.iloc[:1,:1] = 0
+data.loc['row2':'row2','col2':'col2'] = 0
+print(data)
+print(data.loc[ data['col1']>1, ['col2','col1'] ])
+data.loc[data['col1']>1,['col2','col1']] = 0
+print(data)
+
+OUTPUT:
+      col1  col2  col3
+row1     1     4     7
+row2     2     5     8
+row3     3     6     9
+
+      col1
+row1     1
+
+      col2
+row2     5
+
+      col1  col2  col3
+row1     0     4     7
+row2     2     0     8
+row3     3     6     9
+
+      col2  col1
+row2     0     2
+row3     6     3
+
+
+      col1  col2  col3
+row1     0     4     7
+row2     0     0     8
+row3     0     0     9
+'''
+
+import pandas as pd
+data = pd.DataFrame(
+    {'col1':[1,2,3],'col2':[4,5,6], 
+    'col3':[7,8,9]}, 
+    index=['row1','row2','row3'])
+print(data)
+print(data.iloc[:1,:1])
+print(data.loc['row2':'row2','col2':'col2'])
+data.iloc[:1,:1] = 0
+data.loc['row2':'row2','col2':'col2'] = 0
+print(data)
+print(data.loc[ data['col1']>1, ['col2','col1'] ])
+data.loc[data['col1']>1,['col2','col1']] = 0
+print(data)
+
+#     SERIES DICT INDEXING
+'''
+import pandas as pd
+
+state_cap = pd.Series({'kar':1,'andra':2,'tn':3})
+state_lan = pd.Series({'kar':1,'andra':2,'tz':3})
+
+# both of the column will uses same key which is specified
+# in the both above dict
+data = pd.DataFrame({'capitals':state_cap,'lang':state_lan})
+data['ner'] = data['capitals']+ data['lang']
+print(data)
+
+OUTPUT:
+       capitals  lang  ner
+andra       2.0   2.0  4.0
+kar         1.0   1.0  2.0
+tn          3.0   NaN  NaN
+tz          NaN   3.0  NaN
+'''
+
