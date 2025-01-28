@@ -212,7 +212,30 @@ b    d   40.0         5       s
 e    e   50.0         6       s
 g    g   70.0         5       n
 
-                
+
+                MULTIPLE CONDITIONAL SELECTION
+
+import numpy as np
+import pandas as pd
+
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+condition = (df['attempts'] < 2) & (df['score'] > 16)
+print(df[condition])
+
+OUTPUT:
+  name  score  attempts qualify
+G    r   17.0         1       y
+J    c   20.0         1       y
+
+
                    SLICING DF WITH NOTNULL AND ISNULL
 exam_data = {
     'name':['a','b','c','d','e','f','g'],
@@ -316,7 +339,76 @@ tn            3     3
  [2 2]
  [3 3]]
 
+ 
+                     AXES
 
+Returns row labels and column labels
+
+import numpy as np
+import pandas as pd
+
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+print(df.axes)
+
+OUTPUT:
+
+[Index(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], 
+dtype='object'), Index(['name', 'score', 'attempts', 
+'qualify'], dtype='object')]
+
+
+                           BETWEEEN FUNCTION
+
+import numpy as np
+import pandas as pd
+
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+
+print(df[df['score'].between(16,20)])
+
+OUTPUT:
+  name  score  attempts qualify
+C    s   16.5         2       y
+G    r   17.0         1       y
+J    c   20.0         1       y
+
+
+                       DROP 
+
+import numpy as np
+import pandas as pd
+
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+df.loc['L'] = ['R',16,2,'y']
+
+# deletes the row accepts only row labels
+
+df.drop('L', inplace=True)
+print(df)
 '''
 #                   INDEX
 
@@ -539,6 +631,16 @@ row3     3     6     9
  3. ix - combination of implicit and explicit accessing. but it is
          deprecated
 
+THINGS TO REMEMBER: loc or iloc[start_rowIndex: end_rowIndex 
+                        start_column_index:end_columnindex
+                        stepper
+                        ]
+
+                    loc or iloc[[list of row labels roe index],
+                                [list of column labels or index]]
+
+                    loc or iloc[rowindex,columindex]
+
 
 EXAMPLE FOR LOC:
 
@@ -689,22 +791,64 @@ row3     6     3
 row1     0     4     7
 row2     0     0     8
 row3     0     0     9
-'''
 
+
+
+                    ADDING NEW ROW WITH LOC
+
+df.loc['L'] = ['R',16,2,'y']
+
+
+       ACCESSING DF DATA WITH LIST OF ROWS AMD COLUMN INDEX WITH ILOC
+
+#df.iloc[[list of indexs of row],[list of index of columns]]
+
+print(df.iloc[[1,3,5,7],[1,2]])
+
+
+         ACCESSING DF DATA WITH LIST OF ROWS AMD COLUMN INDEX WITH LOC
+         
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+
+# Modifies the score to 16
+df.loc['C','score'] = 16
+df.loc['I','score'] = 16
+print(df)
+
+OR   
+
+df.loc[['C','I'],'score'] = 16
+
+
+    MODIFYING OR ACCESSSING VALUES WITHOUT START AND END RANG ON LOC
+
+import numpy as np
 import pandas as pd
-data = pd.DataFrame(
-    {'col1':[1,2,3],'col2':[4,5,6], 
-    'col3':[7,8,9]}, 
-    index=['row1','row2','row3'])
-print(data)
-print(data.iloc[:1,:1])
-print(data.loc['row2':'row2','col2':'col2'])
-data.iloc[:1,:1] = 0
-data.loc['row2':'row2','col2':'col2'] = 0
-print(data)
-print(data.loc[ data['col1']>1, ['col2','col1'] ])
-data.loc[data['col1']>1,['col2','col1']] = 0
-print(data)
+
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+
+# This same will applies for iloc
+df.loc['C','score'] = 16 # df.loc[row_label,column_label] 
+print(df)
+
+
+'''
 
 #     SERIES DICT INDEXING
 '''
@@ -727,3 +871,18 @@ tn          3.0   NaN  NaN
 tz          NaN   3.0  NaN
 '''
 
+import numpy as np
+import pandas as pd
+
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+df.loc['L'] = ['R',16,2,'y']
+df.drop('', inplace=True)
+print(df)
