@@ -871,18 +871,462 @@ tn          3.0   NaN  NaN
 tz          NaN   3.0  NaN
 '''
 
-import numpy as np
+#          REINDXING WITH PANDAS IN SERIES
+
+'''
+ Used to change the order of existing series or DF's index
+
+ It returns the newly ordererd series or DF
+
+ Take index as it's paramters
+
 import pandas as pd
+ob = pd.Series([1,2,3,4], index=['b','n','a','c'])
+ob1 = ob.reindex(index=['a','b','c','n'])
+print(ob)
+print(ob1)
 
-exam_data={
-    'name':['a','a','s','r','l','m','r','k','b','c'],
-    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
-    'attempts':[1,3,2,3,2,3,1,1,2,1],
-    'qualify':['y','n','y','n','n','y','y','n','n','y']
-}
-labels = ["A","B",'C','D','E','F','G','H','I','J']
+OUTPUT:
 
-df = pd.DataFrame(exam_data,index=labels)
-df.loc['L'] = ['R',16,2,'y']
-df.drop('', inplace=True)
-print(df)
+b    1
+n    2
+a    3
+c    4
+dtype: int64
+
+a    3
+b    1
+c    4
+n    2
+dtype: int64
+
+  If we give a index to the reindex parameter which is not in
+  the ob then it generates a NAN data for that new index.
+
+  In the below code e is not in ob.
+
+import pandas as pd
+ob = pd.Series([1,2,3,4], index=['b','n','a','c'])
+ob1 = ob.reindex(index=['a','b','c','n','e'])
+print(ob)
+print(ob1)
+
+OUTPUT:
+b    1
+n    2
+a    3
+c    4
+dtype: int64
+
+a    3.0
+b    1.0
+c    4.0
+n    2.0
+e    NaN   # NAN
+
+
+                      FFILL WITH METHOD
+
+ To fill this NAN value method param used, it have ffill - forward
+ fill, bfill - backward fill
+
+ In forward fill all NaN values are filled with the last value
+
+import pandas as pd
+import numpy as np
+ob = pd.Series([1,2,3], index=[0,1,2])
+ob1 = ob.reindex(index=np.arange(6), method='ffill')
+print(ob)
+print(ob1)
+
+OUTPUT:
+0    1
+1    2
+2    3
+dtype: int64
+                 # Here the value for last index is 3
+                 # all possible NaN are filled with 3 
+0    1
+1    2
+2    3
+3    3
+4    3
+5    3
+dtype: int64
+'''
+
+#               REINDEX IN DF
+'''
+ paramters for reindex method in DF is differe from series
+
+ 1. labels 
+ 2. index
+ 3. columns  - we can rename column name it is not in series
+ 4. axis
+ 5. method
+ 6. fill_value
+
+ ADDING NEW INDEX ON ROW WITH REINDEX
+
+import pandas as pd
+import numpy as np
+ob = pd.DataFrame(np.arange(9).reshape((3,3)),index=['a','c','d']
+                  ,columns=['And','Tm','Ke'])
+ob1 = ob.reindex(index=['a','b','c','d'])
+print(ob)
+print(ob1)
+
+ OUTPUT:
+
+    And  Tm  Ke
+a    0   1   2
+c    3   4   5
+d    6   7   8
+
+   And   Tm   Ke
+a  0.0  1.0  2.0
+b  NaN  NaN  NaN
+c  3.0  4.0  5.0
+d  6.0  7.0  8.0
+
+
+   ADDING NEW INDEX ON COLUMN WITH REINDEX
+
+import pandas as pd
+import numpy as np
+ob = pd.DataFrame(np.arange(9).reshape((3,3)),index=['a','c','d']
+                  ,columns=['And','Tm','Ke'])
+ob1 = ob.reindex(columns=['And','Tm','Ke','Tel'])
+print(ob)
+print(ob1)
+
+OUTPUT:
+
+   And  Tm  Ke
+a    0   1   2
+c    3   4   5
+d    6   7   8
+
+   And  Tm  Ke  Tel
+a    0   1   2  NaN
+c    3   4   5  NaN
+d    6   7   8  NaN
+
+                  FILLING VALUES
+
+import pandas as pd
+import numpy as np
+ob = pd.DataFrame(np.arange(9).reshape((3,3)),index=['a','c','d']
+                  ,columns=['And','Tm','Ke'])
+ob1 = ob.reindex(index=['a','c','d','b'],columns=['And','Tm','Ke','Tel'], fill_value='0')
+print(ob)
+print(ob1)
+
+'''
+
+#                        DROP METHOD
+'''
+ Used to drop rows or columns in DP, In Series it removes list of
+ values in a series. 
+
+ drop() method will return the new values removed Series, DF 
+
+ If the specified index or lables is not present it will throw error
+ not found
+
+ paramters
+
+ 1. labels 
+ 2. axis
+ 3. index
+ 4. columns
+ 5. inplace
+
+                  SERIES DROP
+
+s = pd.Series([1,2,3,4])
+print(s)
+print(s.drop(index=[0]))
+
+OUTPUT:
+0    1
+1    2
+2    3
+3    4
+dtype: int64
+
+1    2
+2    3
+3    4
+dtype: int64
+
+                    DF DROP
+
+import pandas as pd
+import numpy as np
+ob = pd.DataFrame(np.arange(9).reshape((3,3)),index=['a','c','d']
+                  ,columns=['And','Tm','Ke'])
+ob1 = ob.reindex(index=['a','c','d','b'],columns=['And','Tm','Ke','Tel'], fill_value='0')
+ob2 = ob1.drop(index=['b'], columns=['Tel','Ke'])
+print(ob2)
+
+OUTPUT:
+
+  And Tm
+a   0  1
+c   3  4
+d   6  7
+
+               REMOVE THE VALUES WITH AXIS
+
+ axis - 0 rows , 1 columns
+
+ import pandas as pd
+import numpy as np
+ob = pd.DataFrame(np.arange(9).reshape((3,3)),index=['a','c','d']
+                  ,columns=['And','Tm','Ke'])
+
+# removes a row from axis 0
+# we can gives values to axis like 'row' 
+# instead o 0 'column' instead of 1
+
+ob1 = ob.drop('a', axis=0)
+print(ob)
+print(ob1)
+
+OUTPUT:
+   And  Tm  Ke
+a    0   1   2
+c    3   4   5
+d    6   7   8
+
+   And  Tm  Ke
+c    3   4   5
+d    6   7   8
+
+
+                     INPLACE
+
+    helps to drop the values from original DF or Series
+    instead of returing to a new Series or DF. 
+
+import pandas as pd
+import numpy as np
+ob = pd.DataFrame(np.arange(9).reshape((3,3)),index=['a','c','d']
+                  ,columns=['And','Tm','Ke'])
+
+ob.drop('a', axis='index', inplace=True)
+print(ob)
+
+OUTPUT:
+
+   And  Tm  Ke
+c    3   4   5
+d    6   7   8
+
+'''
+
+#              ARITHMETIC AND DATA ALIGNMENT
+
+'''
+         ARITHMETIC ADDITION IN SERIES
+
+import pandas as pd
+import numpy as np
+s = pd.Series([1,2,3,4], index=['a','c','d','e'])
+s1 = pd.Series([7,7,4,4,3], index=['a','c','s','d','e'])
+print(s+s1) # s index is not in s variable it will return NAN for
+            # this operation
+
+
+OUTPUT:
+
+a    8.0
+c    9.0
+d    7.0
+e    7.0
+s    NaN
+
+
+                   ARITHMETIC IN DF 
+
+
+import pandas as pd
+import numpy as np
+
+df1 = pd.DataFrame(np.arange(16).reshape((4,4)),index=['a','b','c','d'])
+df2 = pd.DataFrame(np.arange(25).reshape((5,5)),index=['a','b','c','d','e'])
+print(df1)
+print(df2)
+print(df1+df2) # Same as series for e and 4th column it return NAN
+
+
+OUTPUT:
+
+    0   1   2   3
+a   0   1   2   3
+b   4   5   6   7
+c   8   9  10  11
+d  12  13  14  15
+
+
+    0   1   2   3   4
+a   0   1   2   3   4
+b   5   6   7   8   9
+c  10  11  12  13  14
+d  15  16  17  18  19
+e  20  21  22  23  24
+
+
+      0     1     2     3   4
+a   0.0   2.0   4.0   6.0 NaN
+b   9.0  11.0  13.0  15.0 NaN
+c  18.0  20.0  22.0  24.0 NaN
+d  27.0  29.0  31.0  33.0 NaN
+e   NaN   NaN   NaN   NaN NaN
+
+
+    This same happens for string based data
+
+import pandas as pd
+import numpy as np
+
+df1 = pd.DataFrame({'A':['hello','hi'], 'B':['hk', 'heko']})
+df2 = pd.DataFrame({'B':['hi','hello'], 'C':['hk', 'heko']})
+print(df1)
+print(df2)
+print(df1+df2) # Same as series for e and 4th column it return NAN
+
+OUTPUT:
+
+       A     B
+0  hello    hk
+1     hi  heko
+
+       B     C
+0     hi    hk
+1  hello  heko
+
+    A          B   C
+0 NaN       hkhi NaN
+1 NaN  hekohello NaN
+
+                
+                    USING FILL_VALUE FOR NAN
+
+ add() is method in DF and series helps to fill remain the
+ values as it is if we give the fill value as 0
+
+ First it applies 0.0 to all the columns and then it starts
+ to make arithmetic operation
+
+import pandas as pd
+import numpy as np
+
+df1 = pd.DataFrame(np.arange(9).reshape((3,3)),
+                   index=['a','b','c'], 
+                   columns=['c2','c3','c4'])
+df2 = pd.DataFrame(np.arange(16).reshape((4,4)), 
+                   index=['a','b','c','d'], 
+                   columns=['c2','c3','c4','c5'])
+print(df1)
+print(df2)
+df3 = df1.add(df2, fill_value=0) # it adds 0 to the existing NAN value
+print(df3)
+
+OUTPUT:
+
+   c2  c3  c4
+a   0   1   2
+b   3   4   5
+c   6   7   8
+
+   c2  c3  c4  c5
+a   0   1   2   3
+b   4   5   6   7
+c   8   9  10  11
+d  12  13  14  15
+
+     c2    c3    c4    c5
+a   0.0   2.0   4.0   3.0
+b   7.0   9.0  11.0   7.0
+c  14.0  16.0  18.0  11.0
+d  12.0  13.0  14.0  15.0
+
+import pandas as pd
+import numpy as np
+
+df1 = pd.DataFrame(np.arange(9).reshape((3,3)),
+                   index=['a','b','c'], 
+                   columns=['c2','c3','c4'])
+df2 = pd.DataFrame(np.arange(16).reshape((4,4)), 
+                   index=['a','b','c','d'], 
+                   columns=['c2','c3','c4','c5'])
+print(df1)
+print(df2)
+df3 = df1.add(df2, fill_value=2) # it adds 2 to the existing NAN value
+print(df3)
+
+# look at the c5 of both and d
+
+OUTPUT:
+   c2  c3  c4
+a   0   1   2
+b   3   4   5
+c   6   7   8
+
+   c2  c3  c4  c5
+a   0   1   2   3
+b   4   5   6   7
+c   8   9  10  11
+d  12  13  14  15
+
+     c2    c3    c4    c5
+a   0.0   2.0   4.0   5.0
+b   7.0   9.0  11.0   9.0
+c  14.0  16.0  18.0  13.0
+d  14.0  15.0  16.0  17.0
+
+
+                    SCLAR ARITHMETIC
+
+df1 = pd.DataFrame(np.arange(9).reshape((3,3)),
+                   index=['a','b','c'], 
+                   columns=['c2','c3','c4'])
+df2 = pd.DataFrame(np.arange(16).reshape((4,4)), 
+                   index=['a','b','c','d'], 
+                   columns=['c2','c3','c4','c5'])
+print(df1)
+print(df1*3)
+
+OR
+
+df1.rmul(3)
+
+To add sclare values (means one value) to DF there
+will be lots of method which start's with r
+'''
+
+#                     BOARD CASTING
+'''
+ The operation between series and DF know as board casting.
+
+ It is done in each row
+'''
+import pandas as pd
+import numpy as np
+
+df1 = pd.DataFrame(np.arange(16).reshape((4,4)),
+                   index=['a','b','c','d'])
+s1 = pd.Series(range(3), 
+                   index=['a','b','f']
+                   )
+print(df1)
+print(s1)
+print(df1-s1)
+
+s = pd.Series([1,2,3,4], index=['a','c','d','e'])
+s1 = pd.Series([7,7,4,4,3], index=['a','c','s','d','e'])
+#print(s+s1) # s index is not in s variable it will return NAN for
+            # this operation
+
