@@ -631,7 +631,7 @@ row3     3     6     9
  3. ix - combination of implicit and explicit accessing. but it is
          deprecated
 
-THINGS TO REMEMBER: loc or iloc[start_rowIndex: end_rowIndex 
+THINGS TO REMEMBER: loc or iloc[start_rowIndex: end_rowIndex,
                         start_column_index:end_columnindex
                         stepper
                         ]
@@ -1307,6 +1307,12 @@ To add sclare values (means one value) to DF there
 will be lots of method which start's with r
 '''
 
+#                      TO_DATETIME FUNCTION IN PD
+'''
+change the string date to normal date object 
+
+df_parsed = df['Date of Birth'].dropna().apply(pd.to_datetime, errors='coerce')
+'''
 #                     BOARD CASTING
 '''
  The operation between series and DF know as board casting.
