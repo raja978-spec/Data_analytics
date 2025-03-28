@@ -11,6 +11,8 @@
 
  * Pandas build in top of numpy for data analysis, it 
    is an enchaned version of numpy.
+
+ * Main use of pandas is data manipulations
 '''
 
 #     BUILDING BLOCKS OF PANDAS
@@ -18,8 +20,8 @@
  In pandas table the first column always will be index that
  represents the location of each row data.
 
- Columns are denoted ny axis = 0 or 1, combination of row and
- column constrctions DataFrame, Series will be one single column
+ Columns are denoted by axis = 0 or 1, combination of row and
+ column constrictions DataFrame, Series will be one single column
  or collection of columns.
 '''
 
@@ -118,6 +120,8 @@ print(s)
 
 
 '''
+
+
 #                    DF
 
 '''
@@ -1319,20 +1323,302 @@ df_parsed = df['Date of Birth'].dropna().apply(pd.to_datetime, errors='coerce')
 
  It is done in each row
 '''
+
+#           SHALLOW COPY AND DEEP COPY
+'''
+
 import pandas as pd
-import numpy as np
 
-df1 = pd.DataFrame(np.arange(16).reshape((4,4)),
-                   index=['a','b','c','d'])
-s1 = pd.Series(range(3), 
-                   index=['a','b','f']
-                   )
+x=pd.Series([1,2,3])
+y=pd.Series([4,5,6])
+
+df=pd.DataFrame(columns=['X','Y'])
+df['X']=x
+df['Y']=y
+
+df_shallow = df.copy(deep= False) # Changes made in this df
+                                  # will affect original
+
+print(df['X'][0]) # 1
+
+df_shallow.iloc[0,0]=10
+
+print(df.iloc[0,0]) # 10
+
+df_deep = df.copy(deep= True) # change made in this df will not
+                              # original df
+
+df_deep.iloc[0,0] = 15
+print(df.iloc[0,0])
+
+'''
+
+#           MERGE OPERATION
+'''
+Works like sql join, default it does inner join
+
+Merges two data frame, If any of the column is
+matched in both df, it will take common elements
+from it.
+
+And also if we tries to merge a df that has different
+shape the extra elements in right side df are
+ignored.
+
+EX FOR INNER JOIN:
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]})
+df2 = pd.DataFrame({'x':[1,2,10,5],'z':[10,11,12,13]})
+
+df3= pd.merge(df1, df2)
+print(df3)
+
+OUTPUT:
+   x  y   z
+0  1  4  10
+1  2  5  11
+
+                    RIGHT JOIN
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]})
+df2 = pd.DataFrame({'x':[4,2,6],'z':[4,5,6]})
+df3 = pd.DataFrame({'z':[1,2,3],'y':[1,2,3]})
+
+# keeps df2 data and take common data
+# in this df1, df2 have same values
+# on x that is 2 and same values on
+# y and z that is 5, this all will
+# be showed
+print(df1.merge(df2, how='right'))
+
+
+OUTPUT:
+   x    y  z
+0  4  NaN  4
+1  2  5.0  5
+2  6  NaN  6
+
+                         LEFT
+
+Keep left df's uncommon data with common right
+df's data
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]})
+df2 = pd.DataFrame({'x':[4,2,6],'z':[4,5,6]})
+df3 = pd.DataFrame({'z':[1,2,3],'y':[1,2,3]})
+
+print(df1.merge(df2, how='left'))
+
+
+OUTPUT:
+   x  y    z
+0  1  4  NaN
+1  2  5  5.0
+2  3  6  NaN
+
+                         
+                           OUTER
+
+In Pandas, how='outer' in merge() performs an outer join, 
+which means it keeps all records from both DataFrames and 
+fills in missing values (NaN) where there is no match.
+
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]})
+df2 = pd.DataFrame({'x':[4,2,6],'z':[4,5,6]})
+df3 = pd.DataFrame({'z':[1,2,3],'y':[1,2,3]})
+
+print(df1.merge(df2, how='outer'))
+
+
+OUTPUT:
+   x    y    z
+0  1  4.0  NaN
+1  2  5.0  5.0
+2  3  6.0  NaN
+3  4  NaN  4.0
+4  6  NaN  6.0
+
+
+        DIFFERENCE BETWEEN DF merge AND PD merge
+
+We can all this join in pd merge, But the difference is
+df.merge() uses method chain, pd.merge() combining DataFrames 
+dynamically or in functions.
+
+
+Example for pd merge:
+print(pd.merge(df1, df2, how='right'))
+print(pd.merge(df1, df2, how='outer'))
+
+
+                        MERGE MORE THAN ONE DF
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]})
+df2 = pd.DataFrame({'x':[4,2,6],'z':[4,5,6]})
+df3 = pd.DataFrame({'z':[1,2,3],'y':[1,2,3]})
+
+right_merge= pd.merge(df1, df2, how='right')
+print('right merge\n', right_merge,'\n')
+print('df3\n', df3,'\n')
+df4 = pd.merge(right_merge, df3, how='right')
+print(df4)
+
+OUTPUT:
+
+right merge
+    x    y  z
+0  4  NaN  4
+1  2  5.0  5
+2  6  NaN  6
+
+df3
+    z  y
+0  1  1
+1  2  2
+2  3  3
+
+    x  y  z
+0 NaN  1  1
+1 NaN  2  2
+2 NaN  3  3
+
+'''
+
+#                  JOIN
+'''
+Joins two df based on index, it will joins the
+data with same index, and it will put NaN for extra
+index or row which is not there on right hand side
+df.
+
+If index is not specified in both df, then all the elements in
+right df will be joined to left df.
+
+This function can be called by object not by pandas like
+merge.
+
+ERROR WILL BE THROUGH IF:
+
+* It not have same shape df in both side, if index is not present
+  in both df then it will not through error.
+
+* It have same column names
+
+
+In below example index b and c are matched so it will be
+joined to df2, but df1 doesn't have d, so it will put NaN
+
+
+EX:
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]},index=['a','b','c'])
+df2 = pd.DataFrame({'zz':[1,2,10],'z':[10,11,12]}, index=['b','c','d'])
+
+df3= df2.join(df1)
+print(df3)
+
+OUTPUT:
+
+   zz   z    x    y
+b   1  10  2.0  5.0
+c   2  11  3.0  6.0
+d  10  12  NaN  NaN
+
+'''
+
+#                     SET_INDEX
+'''
+
+Column values can be changed to index with set_index
+inplace attribute.
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]},index=['a','b','c'])
+df1.set_index(['x'], inplace=True) # Assign index name using column values
 print(df1)
-print(s1)
-print(df1-s1)
 
-s = pd.Series([1,2,3,4], index=['a','c','d','e'])
-s1 = pd.Series([7,7,4,4,3], index=['a','c','s','d','e'])
-#print(s+s1) # s index is not in s variable it will return NAN for
-            # this operation
+OUTPUT:
 
+   y
+x
+1  4
+2  5
+3  6
+'''
+
+#               RENAMING COLUMN NAME
+'''
+
+In below example column x will be changed to z
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]},index=['a','b','c'])
+df1 = df1.rename(columns={'x':'z'})
+print(df1)
+
+OUTPUT:
+   z  y
+a  1  4
+b  2  5
+c  3  6
+'''
+
+#                          CONCAT
+'''
+
+Concat helps to append the df by combining more the one df, to 
+append all the df has same column name, if a unmatched column
+is exist in any of the df than it will created as new column
+and also it fills nan if values is not present to fill.
+
+import pandas as pd
+
+df1 = pd.DataFrame({'x':[1,2,3],'y':[4,5,6]})
+df2 = pd.DataFrame({'x':[4,5,6],'z':[4,5,6]})
+df3 = pd.DataFrame({'z':[1,2,3],'y':[1,2,3]})
+
+#ignore_index helps to ignore individual index on
+#each data frames, and creates it's own index.
+print(pd.concat([df1, df2, df3], ignore_index=True))
+
+OUTPUT:
+
+     x    y    z
+0  1.0  4.0  NaN
+1  2.0  5.0  NaN
+2  3.0  6.0  NaN
+3  4.0  NaN  4.0
+4  5.0  NaN  5.0
+5  6.0  NaN  6.0
+6  NaN  1.0  1.0
+7  NaN  2.0  2.0
+8  NaN  3.0  3.0
+'''
+
+#          DIFFERENCE BETWEEN MERGE, JOIN, CONCAT
+'''
+Merge - works like sql inner,left,right join, combines
+        data with column keys
+
+Join - works like merge but it combines data with row keys 
+       or index
+
+Concat - Appends df data for common column name, add new column
+         if common column is not exist.
+
+'''
