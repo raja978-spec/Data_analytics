@@ -20,9 +20,36 @@
  In pandas table the first column always will be index that
  represents the location of each row data.
 
- Columns are denoted by axis = 0 or 1, combination of row and
- column constrictions DataFrame, Series will be one single column
+ combination of row and column constrictions DataFrame, 
+ Series will be one single column
  or collection of columns.
+
+ IMPORTANT NOTE ABOUT AXIS:
+
+ Operation    axis=0 (Columns)    axis=1 (Rows)
+Drop        Drops a row         Drops a column
+Sum         Sums down columns   Sums across rows
+Mean        Computes column-wise mean   Computes row-wise mean
+
+'''
+
+#           FIVE IMPUTATION TECHNIQUES
+'''
+ Five imputation techniques:
+
+* Mean Imputation – Fill missing values with the column's average.
+
+* Median Imputation – Replace missing values with the column's middle value, useful for skewed data.
+
+* Mode Imputation – Substitute missing values with the most common value,   ideal for categorical data.
+
+* Forward Fill (ffill) – Carry forward the last known value to fill gaps.
+
+* Backward Fill (bfill) – Use the next available value to replace missing data.
+
+
+
+
 '''
 
 #  READING DOCUMANTATION OF PANDAS IN JUPYTER
@@ -186,6 +213,8 @@ def findScore(s):
 s7=df['score'].apply(findScore)
 s8=s7.dropna() #drops all null value and
                # returns the non-null values
+s7.dropna(in_place=True) # this will drops nan in
+                         # original data frame
 
                 
                  CONDITIONAL DF SLICILNG
@@ -645,6 +674,9 @@ THINGS TO REMEMBER: loc or iloc[start_rowIndex: end_rowIndex,
 
                     loc or iloc[rowindex,columindex]
 
+                    iloc[single_index] # this single index will be considered
+                                         as row 1 column 1
+
 
 EXAMPLE FOR LOC:
 
@@ -1083,7 +1115,7 @@ d   6  7
 
                REMOVE THE VALUES WITH AXIS
 
- axis - 0 rows , 1 columns
+ axis - 0 rows , 1 columns if we use axis with drop
 
  import pandas as pd
 import numpy as np
@@ -1130,7 +1162,7 @@ d    6   7   8
 
 '''
 
-#              ARITHMETIC AND DATA ALIGNMENT
+#              ARITHMETIC OPERATIONS AND DATA ALIGNMENT
 
 '''
          ARITHMETIC ADDITION IN SERIES
@@ -1622,3 +1654,87 @@ Concat - Appends df data for common column name, add new column
          if common column is not exist.
 
 '''
+
+#                         ISIN
+'''
+Returns bool for the specified condition
+
+import pandas as pd
+
+df=pd.DataFrame(data=[[1,2,3],[4,5,6],
+                      [7,8,9],[10,11,12]], 
+                      columns=['x','y','z'])
+print(df)
+res = df[df['x'].isin([1,10])]
+print(res)
+'''
+
+#                  IAT
+'''
+It is used to retrieve only one value in a dataframe, while
+iloc retrieves multiple values by slicing, it is faster than
+iloc when we want to retrieve single value.
+
+import pandas as pd
+
+df=pd.DataFrame(data=[[1,2,3],[4,5,6],
+                      [7,8,9],[10,11,12]], 
+                      columns=['x','y','z'])
+print(df)
+df.iat[1,2]=255
+print(df)
+
+OUTPUT:
+    x   y   z
+0   1   2   3
+1   4   5   6
+2   7   8   9
+3  10  11  12
+    x   y    z
+0   1   2    3
+1   4   5  255
+2   7   8    9
+3  10  11   12
+
+'''
+
+#        DIFFERENCE BETWEEN ISNA, ISNULL
+'''
+✅ Use isna() → It’s more modern and aligns with .fillna(), .dropna(), etc.
+
+✅ isnull() exists for readability and backward compatibility.
+
+🔹 Bottom Line: They do the same thing, so use whichever you prefer!
+'''
+
+#                FILLNA
+'''
+Helps to fill NaN to all the missing fields, also it helps
+to put some default values on instead of NaN
+
+import pandas as pd
+import numpy as np
+
+df=pd.DataFrame(data=[[1,2,3],[4,5,6],
+                      [7,8,9],[10,11,12]], 
+                      columns=['x','y','z'])
+df.iat[1,2]=np.nan
+df.iat[2,2]=np.nan
+print(df)
+df.fillna(value=100, inplace=True)
+print(df)
+
+'''
+
+
+import pandas as pd
+import numpy as np
+
+df=pd.DataFrame(data=[[1,2,3],[4,5,6],
+                      [7,8,9],[10,11,12]], 
+                      columns=['x','y','z'])
+df.iat[1,2]=np.nan
+df.iat[2,2]=np.nan
+print(df)
+df.dropna(inplace=True)
+print(df)
