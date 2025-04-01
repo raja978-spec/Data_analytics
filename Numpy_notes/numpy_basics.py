@@ -29,6 +29,10 @@ print(random.randint(10,100))
 Numpy array shares single space instead of allocation new space
 for new processed array.
 
+Standard Python objects take up more memory than NumPy objects 
+operations on NumPy objects complete very quickly compared to 
+comparable objects in standard Python.
+
 import numpy as np
 
 nump1= np.array([1,2,4,5,6,6])
@@ -130,6 +134,9 @@ nump4 = np.insert(nump1,[3], [[1],[4]], 1) # inserts 1 and 4 in as new column
 nump5 = np.delete(nump2, [2], 0) # deletes 2nd element in row
 print(nump5)
 '''
+
+#              ARANGE, ZEROS, DIAG
+'''
 import numpy as np
 
 nump1= np.arange(1,7,3) # creates 1D array from 1 to 10 values
@@ -140,6 +147,13 @@ nump2 = np.diag((1,10, 11)) # creates diagnal 2D matrix
 # 1 is placed at position (0,0)
 # 10 is placed at position (1,1)
 #other are 0
+print(nump2)
+
+OUTPUT:
+
+[[ 1  0  0]
+ [ 0 10  0]
+ [ 0  0 11]]
 
 nump3 =  np.random.random(10) # randomly generates 10 floating
                               # numbers while arange creates 
@@ -147,3 +161,4 @@ nump3 =  np.random.random(10) # randomly generates 10 floating
 
 nump4 = nump3.mean() # return mean
 print(nump4)
+'''

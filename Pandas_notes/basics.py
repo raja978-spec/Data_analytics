@@ -1726,15 +1726,112 @@ print(df)
 
 '''
 
+#           DUPLICATED FUNCTION
+'''
+The Python method .duplicated() returns a boolean Series for your 
+DataFrame. True is the return value for rows that:
+
+contain a duplicate, where the value for the row contains the 
+first occurrence of that value.
+
+It returns the series of bool as result, if duplicate is found
+True will be returned.
+
+The Python method .duplicated() returns a boolean Series for your DataFrame. 
+True is the return value for rows that contain a duplicate, where the value for the row 
+contains the first occurrence of that value.
 
 import pandas as pd
-import numpy as np
 
-df=pd.DataFrame(data=[[1,2,3],[4,5,6],
-                      [7,8,9],[10,11,12]], 
-                      columns=['x','y','z'])
-df.iat[1,2]=np.nan
-df.iat[2,2]=np.nan
-print(df)
-df.dropna(inplace=True)
-print(df)
+df = pd.DataFrame({'A': [1, 2, 2, 3, 4, 4, 4], 'B': [5, 6, 6, 7, 8, 8, 9]})
+
+print(df.duplicated(subset=['A']))
+
+OUTPUT:
+
+0    False  # 1 appears first
+1    False  # 2 appears first
+2     True  # 2 appears again (duplicate)
+3    False  # 3 appears first
+4    False  # 4 appears first
+5     True  # 4 appears again (duplicate)
+6     True  # 4 appears again (duplicate)
+dtype: bool
+
+
+
+It checks each row if we haven't give the column name
+
+EX:
+
+import pandas as pd
+
+df = pd.DataFrame({'A': [1, 2, 2, 3, 4, 4, 4], 'B': [5, 6, 6, 7, 8, 8, 9]})
+
+OUTPUT:
+
+In below output has the variations for last result, in previous code
+last result was True, but here it becomes False
+
+0    False  # (1,5) is unique
+1    False  # (2,6) appears first
+2     True  # (2,6) appears again (duplicate)
+3    False  # (3,7) is unique
+4    False  # (4,8) appears first
+5     True  # (4,8) appears again (duplicate)
+6    False  # (4,9) is unique 
+dtype: bool
+
+
+                   DROP DUPLICATES
+
+Helps to drop duplicate values in a specific column
+It drops duplicate on original dataset.
+
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,2,2],'y':[1,3,3,4]})
+print(data['x'].drop_duplicates())
+
+OUTPUT:
+0    1
+1    2
+Name: x, dtype: int64
+
+
+When no columns are specified it check each and every row
+for remove duplicate.
+
+EX:
+
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2]})
+print('Before duplicate removal ')
+print(data)
+print('After duplicate removal ')
+print(data.drop_duplicates())
+
+OUTPUT:
+
+Before duplicate removal 
+   x  y
+0  1  1
+1  2  2
+2  5  7
+3  6  4
+4  2  2
+After duplicate removal
+   x  y
+0  1  1
+1  2  2
+2  5  7
+3  6  4
+
+
+'''
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2]})
+print('Before duplicate removal ')
+print(data)
+print('After duplicate removal ')
+print(data.drop_duplicates())
+
