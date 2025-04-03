@@ -21,7 +21,9 @@ print(nump > 5)
 #                RAND INT
 '''
 from numpy import random
-print(random.randint(10,100))
+print(random.randint(10,100)) # returns single random value
+
+y = np.random.randint(100, size=(3)) # creates 3 random values
 '''
 
 #                  NUMPY ARRAY ADVANTAGE
