@@ -396,6 +396,25 @@ plt.show()
 
 '''
 
+#               SUBPLOT WITH SINGLE ARGUMENT
+'''
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = sns.load_dataset('iris')
+
+def plot():
+    sns.lineplot(data=data, x='sepal_length', y='sepal_width')
+
+with sns.axes_style('darkgrid'):
+     plt.subplot(211) # Create one chart
+     plot()
+
+plt.subplot(212) # again created one char next to the previuos chart
+plot()
+plt.show()
+'''
+
 #         SCATTER PLOT
 '''
 Helps to compare two variable's relationship
@@ -602,12 +621,29 @@ plt.legend(['Group1', 'Group2'])
 plt.show()
 
 '''
+
+#                FIGURE
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 
 x=np.random.randint(1000, size=10)
 y=np.random.randint(1000, size=10)+2
 
+plt.figure(figsize=(10,3))
+plt.hist([x, y],
+         edgecolor='black', stacked=True)
+plt.legend(['Group1', 'Group2'])
+plt.show()
+
+'''
+import matplotlib.pyplot as plt
+import numpy as np
+
+x=np.random.randint(1000, size=10)
+y=np.random.randint(1000, size=10)+2
+
+plt.figure(figsize=(10,3))
 plt.hist([x, y],
          edgecolor='black', stacked=True)
 plt.legend(['Group1', 'Group2'])
