@@ -141,6 +141,8 @@ print(nump5)
 '''
 import numpy as np
 
+print(np.arange(start=1, stop=10, step=2))# 1D array
+
 nump1= np.arange(1,7,3) # creates 1D array from 1 to 10 values
 nump1 = np.zeros(4) # create zeros 1D array
 
@@ -164,3 +166,36 @@ nump3 =  np.random.random(10) # randomly generates 10 floating
 nump4 = nump3.mean() # return mean
 print(nump4)
 '''
+
+#                       FILL METHOD
+'''
+import numpy as np
+
+np.full(shape=(4,4), fill_value=[i for i in range(2*2)])
+OUTPUT:
+[[0 1 2 3]
+ [0 1 2 3]
+ [0 1 2 3]
+ [0 1 2 3]]
+'''
+
+#             LINSPACE
+'''
+Generated evenly seperated 1D 2D array
+
+import numpy as np
+print(np.linspace(start=0,stop=0.6,num=3))
+
+OUTPUT:
+[0.  0.3 0.6]
+
+import numpy as np
+print(np.linspace(start=[1,2,3],stop=[4,5,6],num=3))
+
+OUTPUT:
+[[1.  2.  3. ]
+ [2.5 3.5 4.5]
+ [4.  5.  6. ]]
+'''
+import numpy as np
+print(np.linspace(start=[1,2,3],stop=[4,5,6],num=3))

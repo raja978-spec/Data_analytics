@@ -1,0 +1,10 @@
+https://www.geeksforgeeks.org/pandas-interview-questions/
+
+1. What is pandas?
+Package helps to do data manipulation, analysis, cleaning.
+handling missing values in fast manner.
+Built on top of numpy
+
+2. What are the Different Types of Data Structures in Pandas?
+Series - 1D labelled array can hold any data type.
+DF - 2D tabular form data, has row, columns 

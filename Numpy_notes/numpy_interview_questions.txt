@@ -1,0 +1,25 @@
+https://www.geeksforgeeks.org/numpy-interview-questions/
+
+1. What is numpy?
+* A package used to do numerical calculation on N dim
+  array.
+* Used for machine leaning, data science areas
+* It supports array, matrices and variety.
+
+2. How do i create a numpy array?
+Using 
+*np.array()
+*np.zero(shape, dtype) and oness
+*np.full(shape=(4,4), fill_value=[i for i in range(2*2)])
+OUTPUT:
+[[0 1 2 3]
+ [0 1 2 3]
+ [0 1 2 3]
+ [0 1 2 3]]
+* np.arange(start=1, stop=10, step=2)
+OUTPUT: [1 2 3 4 5 6 7 8 9]
+* np.linspace(start=[1,2,3],stop=[4,5,6],num=3)
+OUTPUT:
+[[1.  2.  3. ]
+ [2.5 3.5 4.5]
+ [4.  5.  6. ]]
