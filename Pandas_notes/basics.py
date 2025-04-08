@@ -47,9 +47,6 @@ Mean        Computes column-wise mean   Computes row-wise mean
 
 * Backward Fill (bfill) – Use the next available value to replace missing data.
 
-
-
-
 '''
 
 #  READING DOCUMANTATION OF PANDAS IN JUPYTER
