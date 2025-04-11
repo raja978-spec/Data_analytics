@@ -8,3 +8,9 @@ Built on top of numpy
 2. What are the Different Types of Data Structures in Pandas?
 Series - 1D labelled array can hold any data type.
 DF - 2D tabular form data, has row, columns 
+
+3. List Key Features of Pandas.
+Easy handling missing values
+Integrated with numpy
+Reshape of data is Easy
+Has group by functions
