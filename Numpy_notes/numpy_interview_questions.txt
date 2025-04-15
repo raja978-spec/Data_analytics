@@ -29,3 +29,12 @@ OUTPUT:
 * Board casting
 * supports multi dimensional array
 * Has indexing and slicing
+
+4. How do you calculate the dot product of two NumPy arrays?
+Using numpy.dot(a,b) function
+Using the @ operator
+a @ b
+a: The first input array (NumPy array).
+b: The second input array (NumPy array).
+Both methods will return the dot product of the 
+two arrays as a scalar value.

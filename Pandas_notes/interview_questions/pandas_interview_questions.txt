@@ -14,3 +14,7 @@ Easy handling missing values
 Integrated with numpy
 Reshape of data is Easy
 Has group by functions
+
+4. What is series.
+A Series in Pandas is a one-dimensional labelled array, can hold any 
+data types, A series can be created from a Python tuple, list and dictionary.
