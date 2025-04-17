@@ -18,3 +18,38 @@ Has group by functions
 4. What is series.
 A Series in Pandas is a one-dimensional labelled array, can hold any 
 data types, A series can be created from a Python tuple, list and dictionary.
+
+5. What are the Different Ways to Create a Series?
+* Creating a Series from an Array
+* Creating a Series from an Array with a custom Index
+* Creating a Series from Dictionary
+ dict = {'Geeks': 10,
+  'for': 20,
+  'geeks': 30}
+  # create series from dictionary
+  print(pd.Series(dict))
+OUTPUT:
+Geeks    10
+for      20
+geeks    30
+dtype: int64
+* Creating a Series using NumPy Functions
+# series with numpy linspace()
+  ser1 = pd.Series(np.linspace(3, 33, 3))
+  print(ser1)
+# series with numpy linspace()
+ser2 = pd.Series(np.random.randn(3))
+print("\n", ser2)
+OUTPUT:
+0     3.0
+1    18.0
+2    33.0
+dtype: float64
+ 0    0.694519
+1    0.782243
+2    0.082820
+dtype: float64
+
+7.How can we Create a Copy of the Series?
+shallow - ser.copy(deep=False)
+deep - ser.copy(deep=True)

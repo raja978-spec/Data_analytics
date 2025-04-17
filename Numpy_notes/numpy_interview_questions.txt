@@ -38,3 +38,13 @@ a: The first input array (NumPy array).
 b: The second input array (NumPy array).
 Both methods will return the dot product of the 
 two arrays as a scalar value.
+
+5. How do I access elements in a NumPy array?
+In NumPy, we can access elements in an array by indexing and slicing.
+And by boolean indexing: helps to select elements with condition
+
+6.What is the difference between a shallow copy and a deep copy in NumPy?
+shallow - shared same data with same address space, so the data is not
+          duplicate. So changes made in one will reflected on other one
+deep - Completely new copy in new memory space, so changes made in 
+       this will not be reflected to original one.

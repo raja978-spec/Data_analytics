@@ -637,14 +637,36 @@ plt.legend(['Group1', 'Group2'])
 plt.show()
 
 '''
-import matplotlib.pyplot as plt
-import numpy as np
+#        XTICKS, ROTATION, TEXT
+'''
+plt.text(xaxis_location, y_axislocation, text_want_to_put)
+#Helps to put text on graph
 
-x=np.random.randint(1000, size=10)
-y=np.random.randint(1000, size=10)+2
+plt.xticks(rotation= -45)
+#Helps to rotate the axis name
 
-plt.figure(figsize=(10,3))
-plt.hist([x, y],
-         edgecolor='black', stacked=True)
-plt.legend(['Group1', 'Group2'])
+x=list(Machine_equipment_good_condition_mean_details.keys())
+y=list(Machine_equipment_good_condition_mean_details.values())
+print(y)
+plt.plot(x,y,color='gold',marker='*',
+         markerfacecolor='red',ms=10,
+         mec='black')
+for i in range(len(x)):
+    plt.text(x[i], y[i], str(y[i]), ha='center', va='bottom')
 plt.show()
+
+'''
+
+#     XTICKS WITH ha attribute
+'''
+Helps to control the horizontal space of the ticks
+
+x=list(all_equipment_mean.loc['mean',:].index)
+y=list(all_equipment_mean.loc['mean',:].values)
+plt.plot(x,y,c='gold',marker='*',markersize=10,
+         mfc='red', mec='black')
+plt.xticks(rotation=45, ha='right') 
+plt.title('Fourth Movement business decision')
+plt.show()
+
+'''
