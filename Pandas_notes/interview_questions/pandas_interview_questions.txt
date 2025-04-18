@@ -53,3 +53,47 @@ dtype: float64
 7.How can we Create a Copy of the Series?
 shallow - ser.copy(deep=False)
 deep - ser.copy(deep=True)
+
+8.What is a DataFrame in Pandas?
+Ans: A DataFrame in Panda is a data structure used to store the data in tabular form, 
+that is in the form of rows and columns. It is two-dimensional, size-mutable, 
+and heterogeneous in nature. The main components of a dataframe are data, rows, 
+and columns. A dataframe can be created by loading the dataset from existing 
+storage, such as SQL database, CSV file, Excel file, etc.
+
+9. What are the Different ways to Create a DataFrame in Pandas?
+Creating a DataFrame using a List
+Creating a DataFrame using a List of Lists
+# import pandas as pd
+  import pandas as pd
+
+  # list of strings
+  lst = [[1, 'Geeks'], [2, 'For'], [3, 'Geeks']]
+
+  # Calling DataFrame constructor
+  # on list with column names
+  print(pd.DataFrame(lst, columns=['Id', 'Data']))
+  Output:
+
+   Id   Data
+0   1  Geeks
+1   2    For
+2   3  Geeks
+Creating a DataFrame using a Dictionary
+Creating a DataFrame using a List of Dictionaries
+# import pandas as pd
+  import pandas as pd
+
+  # list of strings
+  lst = [{1: 'Geeks', 2: 'For', 3: 'Geeks'},
+  {1: 'Portal', 2: 'for', 3: 'Geeks'}]
+
+  # Calling DataFrame constructor on list
+  print(pd.DataFrame(lst))
+  Output:
+
+        1    2      3
+0   Geeks  For  Geeks
+1  Portal  for  Geeks
+
+9. How to Read Data into a DataFrame from a CSV file?

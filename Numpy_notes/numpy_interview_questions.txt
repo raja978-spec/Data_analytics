@@ -48,3 +48,14 @@ shallow - shared same data with same address space, so the data is not
           duplicate. So changes made in one will reflected on other one
 deep - Completely new copy in new memory space, so changes made in 
        this will not be reflected to original one.
+
+7. How do you reshape a NumPy array?
+We can reshape a NumPy array by using the reshape() 
+method or the np.reshape() function. it help us to change 
+the dimensions of the array and keep all the elements constant.
+Using the reshape() method:
+array1= original_array.reshape(new_shape)
+Using the np.reshape() function:
+array1 = np.reshape(original_array, new_shape)
+In both cases, original_array is the existing NumPy array you want 
+to reshape, and new_shape is a tuple specifying the desired shape of the new array.

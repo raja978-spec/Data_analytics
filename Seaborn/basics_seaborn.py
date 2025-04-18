@@ -291,11 +291,33 @@ sns.swarmplot(data=data,x="species", y='sepal_width',
              hue_order='species', color='gold')
 plt.show()
 '''
+
+#            HEATMAP
+'''
+Helps to understand the correlation between two variables, it
+it mainly used for linear regression model.
+
+PARAMETERS IT CAN TAKE:
+
+Parameter | What It Does
+data | The data to plot (like a correlation matrix: df.corr())
+annot=True | Shows the actual numbers inside the cells
+fmt='.2f' | Format of the numbers (e.g., 2 decimal places)
+cmap='coolwarm' | Color scheme (many options: 'viridis', 'plasma', 'YlGnBu', etc.)
+linewidths=0.5 | Adds space between cells
+linecolor='black' | Color of the cell borders
+cbar=True | Shows the color scale bar on the side (you can set False to hide it)
+vmin & vmax | Set the min and max values for the color scale (helps compare multiple heatmaps)
+xticklabels / yticklabels | Show/hide or customize row/column labels
+
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 data = sns.load_dataset('iris')
 
-sns.set_theme(context='paper', style='darkgrid')
-sns.histplot(data=data,x="sepal_width", hue='sepal_width', legend=False)
+sns.heatmap(data[['sepal_length','sepal_width','petal_length']].corr(), 
+            annot=True,fmt='.2f', linewidths=2,
+            linecolor='black')
 plt.show()
+'''
