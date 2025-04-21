@@ -59,3 +59,9 @@ Using the np.reshape() function:
 array1 = np.reshape(original_array, new_shape)
 In both cases, original_array is the existing NumPy array you want 
 to reshape, and new_shape is a tuple specifying the desired shape of the new array.
+
+8. How to perform element-wise operations on NumPy arrays?
+To perform element-wise operations on NumPy arrays, you can use 
+standard arithmetic operators.NumPy automatically applies these 
+operations element-wise when you use them with arrays of the same 
+shape.

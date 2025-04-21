@@ -97,3 +97,11 @@ Creating a DataFrame using a List of Dictionaries
 1  Portal  for  Geeks
 
 9. How to Read Data into a DataFrame from a CSV file?
+Ans: We can create a data frame from a CSV file - 
+"Comma Separated Values". This can be done by using the 
+read_csv() method which takes the csv file as the parameter.
+pandas.read_csv(file_name)
+Another way to do this is by using the read_table() 
+method which takes the CSV file and a delimiter value 
+as the parameter.
+pandas.read_table(file_name, delimiter)
