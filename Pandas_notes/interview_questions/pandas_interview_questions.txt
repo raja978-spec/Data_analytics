@@ -105,3 +105,15 @@ Another way to do this is by using the read_table()
 method which takes the CSV file and a delimiter value 
 as the parameter.
 pandas.read_table(file_name, delimiter)
+
+10. How to access the first few rows of a dataframe?
+Ans: The first few records of a dataframe can be accessed by 
+using the pandas head() method. It takes one optional argument 
+n, which is the number of rows. By default, it returns the first 
+5 rows of the dataframe. 
+The head() method has the following syntax:
+df.head(n)
+Another way to do it is by using iloc() method. 
+It is similar to the Python list-slicing technique. 
+It has the following syntax:
+df.iloc[:n]

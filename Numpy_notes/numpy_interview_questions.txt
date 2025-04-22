@@ -65,3 +65,16 @@ To perform element-wise operations on NumPy arrays, you can use
 standard arithmetic operators.NumPy automatically applies these 
 operations element-wise when you use them with arrays of the same 
 shape.
+
+9. Define the var function in NumPy.
+In NumPy, the var function is used to compute the variance of 
+elements in an array or along a specified axis. Variance is a 
+measure of the spread or dispersion of data points.
+np.var(a, axis=None, dtype=None)
+a: The input array for which you want to calculate the variance.
+axis: Axis or axes along which the variance is computed. 
+If not specified, the variance is calculated for the whole array. 
+It can be an integer or a tuple of integers to specify multiple axes.
+dtype: The data type for the returned variance. 
+If not specified, the data type is inferred from the 
+input array.
