@@ -321,3 +321,30 @@ sns.heatmap(data[['sepal_length','sepal_width','petal_length']].corr(),
             linecolor='black')
 plt.show()
 '''
+
+
+#             SCATTER PLOT WITH HUE
+'''
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.scatterplot(data=df, x='Temp_C', y='Rel Hum_%', hue='Months')
+plt.title('Temperature vs Humidity (Colored by Month)')
+plt.show()
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
