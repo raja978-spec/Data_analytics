@@ -117,3 +117,11 @@ Another way to do it is by using iloc() method.
 It is similar to the Python list-slicing technique. 
 It has the following syntax:
 df.iloc[:n]
+
+11. What is Reindexing in Pandas?
+Ans: Reindexing in Pandas as the name suggests means changing the 
+index of the rows and columns of a dataframe. It can be done by 
+using the Pandas reindex() method. In case of missing values or 
+new values that are not present in the dataframe, the reindex() 
+method assigns it as NaN.
+df.reindex(new_index)

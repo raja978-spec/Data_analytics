@@ -78,3 +78,9 @@ It can be an integer or a tuple of integers to specify multiple axes.
 dtype: The data type for the returned variance. 
 If not specified, the data type is inferred from the 
 input array.
+
+10 Define the min and max function in NumPy.
+In NumPy, you can use the min() and max() functions to find 
+the minimum and maximum values in a NumPy array, respectively.
+np.min(a, axis=None)
+np.max(a, axis=None)
