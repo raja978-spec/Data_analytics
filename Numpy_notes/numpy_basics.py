@@ -137,7 +137,7 @@ nump5 = np.delete(nump2, [2], 0) # deletes 2nd element in row
 print(nump5)
 '''
 
-#              ARANGE, ZEROS, DIAG
+#              ARANGE, ZEROS, DIAG, RANDOMS
 '''
 import numpy as np
 
@@ -165,6 +165,24 @@ nump3 =  np.random.random(10) # randomly generates 10 floating
 
 nump4 = nump3.mean() # return mean
 print(nump4)
+
+
+                            RANDOMS
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+print(np.random.rand(3,2))# row column parameter, returns floating
+                          # point values like 0.34234 in the give shape
+
+print(np.random.randint(low=0, high=10, size=(100))) # return random list
+                                                     # of int
+
+plt.plot(np.random.randn(10)) # return combination of minus and plus floating
+                              # values in given size
+#plt.show()
+print(np.random.randn(10))
+
 '''
 
 #                       FILL METHOD
@@ -197,5 +215,32 @@ OUTPUT:
  [2.5 3.5 4.5]
  [4.  5.  6. ]]
 '''
+
+#                         RANDOM SEED
+'''
+random.seed() method in Python is used to initialize the random 
+number generator, ensuring the same random numbers on every run. 
+By default, Python generates different numbers each time, but using 
+.seed() allows result reproducibility.
+
+Syntax
+random.seed(a=None, version=2)
+
+Parameters:
+
+a (Optional): it’s the seed value (integer, float, str, bytes, or 
+bytearray). If None, the system time is used.
+
+version(Optional): defaults value is 2, using a more advanced seeding 
+algorithm. version=1 uses an older method.
+Return Type
+
+random.seed() method does not return any value.
+
+EX:
 import numpy as np
-print(np.linspace(start=[1,2,3],stop=[4,5,6],num=3))
+np.random.seed(0) # we can any int value as seed
+print(np.random.randn(1,2))
+
+'''
+

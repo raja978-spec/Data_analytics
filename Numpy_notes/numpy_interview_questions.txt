@@ -79,8 +79,20 @@ dtype: The data type for the returned variance.
 If not specified, the data type is inferred from the 
 input array.
 
-10 Define the min and max function in NumPy.
+10. Define the min and max function in NumPy.
 In NumPy, you can use the min() and max() functions to find 
 the minimum and maximum values in a NumPy array, respectively.
 np.min(a, axis=None)
 np.max(a, axis=None)
+
+11. How to generate random numbers with NumPy?
+NumPy provides a wide range of functions for generating random numbers. 
+You can generate random numbers from various probability distributions, 
+set seeds for reproducibility, and more. Here are some common ways to 
+generate random numbers with NumPy:
+Using np.random.rand()
+Generating a Random Float between 0 and 1 using np.random.rand()
+random_float = np.random.rand()
+Using np.random.randint()
+Generating a Random Integer within a Range using np.random.randint().
+random_integer = np.random.randint()

@@ -125,3 +125,10 @@ using the Pandas reindex() method. In case of missing values or
 new values that are not present in the dataframe, the reindex() 
 method assigns it as NaN.
 df.reindex(new_index)
+
+12. How to Select a Single Column of a DataFrame?
+Ans: There are many ways to Select a single column of a dataframe. They are as follows:
+By using the Dot operator, we can access any column of a dataframe.
+Dataframe.column_name
+Another way to select a column is by using the square brackets [].
+DataFrame[column_name]
