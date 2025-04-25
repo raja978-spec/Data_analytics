@@ -1825,10 +1825,33 @@ After duplicate removal
 
 
 '''
-import pandas as pd
-data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2]})
-print('Before duplicate removal ')
-print(data)
-print('After duplicate removal ')
-print(data.drop_duplicates())
+#        GET DUMMIES
+'''
+helps to get only numeric values from a dataset and also
+it retruns bool values for categorial values if the value 
+belongs to that particular row
 
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+print(data)
+print(pd.get_dummies(data))
+
+OUTPUT:
+   x  y   z
+0  1  1  hi
+1  2  2   j
+2  5  7   l
+3  6  4   l
+4  2  2   o
+
+   x  y   z_hi    z_j    z_l    z_o
+0  1  1   True  False  False  False
+1  2  2  False   True  False  False
+2  5  7  False  False   True  False
+3  6  4  False  False   True  False
+4  2  2  False  False  False   True
+'''
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+print(data)
+print(pd.get_dummies(data))
