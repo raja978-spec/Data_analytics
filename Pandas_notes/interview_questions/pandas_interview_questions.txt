@@ -132,3 +132,17 @@ By using the Dot operator, we can access any column of a dataframe.
 Dataframe.column_name
 Another way to select a column is by using the square brackets [].
 DataFrame[column_name]
+
+13. How to Rename a Column in a DataFrame?
+Ans: A column of the dataframe can be renamed by using the rename() 
+function. We can rename a single as well as multiple columns at the 
+same time using this method.
+DataFrame.rename(columns={'column1': 'COLUMN_1', 
+'column2':'COLUMN_2'}, inplace=True)
+Another way is by using the set_axis() function which takes the 
+new column name and axis to be replaced with the new name.
+DataFrame.set_axis(labels=['COLUMN_1','COLUMN_2'], axis=1, inplace=True)
+In case we want to add a prefix or suffix to the column names, 
+we can use the add_prefix() or add_suffix() methods.
+DataFrame.add_prefix(prefix='PREFIX_')
+DataFrame.add_suffix(suffix='_suffix')

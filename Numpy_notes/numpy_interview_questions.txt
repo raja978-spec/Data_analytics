@@ -96,3 +96,13 @@ random_float = np.random.rand()
 Using np.random.randint()
 Generating a Random Integer within a Range using np.random.randint().
 random_integer = np.random.randint()
+Using np.random.randn()
+Using np.random.seed()
+We can set a seed using np.random.seed() to ensure that the generated random numbers are reproducible.
+np.random.seed(seed_value)
+
+12. What is the purpose of NumPy in Python?
+NumPy (Numerical Python) is a fundamental library in 
+Python for scientific computing and data analysis. it is 
+the main purpose for providing support for large and 
+multi-dimensional arrays and matrices.

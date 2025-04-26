@@ -1589,7 +1589,7 @@ x
 3  6
 '''
 
-#               RENAMING COLUMN NAME
+#               RENAMING, ADD PREFIX, SUFFIX COLUMN NAME
 '''
 
 In below example column x will be changed to z
@@ -1605,6 +1605,45 @@ OUTPUT:
 a  1  4
 b  2  5
 c  3  6
+
+
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+# renames particular column or collection of column
+print(data.rename(columns={'x':'X'}))
+# rename all columns
+print(data.set_axis(labels=['col1','col2','col3'], axis=1))
+# add prefix suffix to column names
+print(data.add_prefix(prefix='hello_'))
+print(data.add_suffix(suffix='hi'))
+
+
+OUTPUT:
+   X  y   z
+0  1  1  hi
+1  2  2   j
+2  5  7   l
+3  6  4   l
+4  2  2   o
+   col1  col2 col3
+0     1     1   hi
+1     2     2    j
+2     5     7    l
+3     6     4    l
+4     2     2    o
+   hello_x  hello_y hello_z
+0        1        1      hi
+1        2        2       j
+2        5        7       l
+3        6        4       l
+4        2        2       o
+   xhi  yhi zhi
+0    1    1  hi
+1    2    2   j
+2    5    7   l
+3    6    4   l
+4    2    2   o
+
 '''
 
 #                          CONCAT
@@ -1851,7 +1890,4 @@ OUTPUT:
 3  6  4  False  False   True  False
 4  2  2  False  False  False   True
 '''
-import pandas as pd
-data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
-print(data)
-print(pd.get_dummies(data))
+
