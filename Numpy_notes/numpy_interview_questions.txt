@@ -106,3 +106,19 @@ NumPy (Numerical Python) is a fundamental library in
 Python for scientific computing and data analysis. it is 
 the main purpose for providing support for large and 
 multi-dimensional arrays and matrices.
+
+13. How can you create a NumPy array from a Python list?
+We can create a NumPy array from a Python list using the np.array() constructor provided by NumPy.
+python_list = [1, 2, 3, 4, 5]
+# Convert the Python list to a NumPy array
+numpy_array = np.array(python_list)
+
+Q.14 How can you access elements in a NumPy array based on specific conditions?
+We can access elements in a NumPy array based on specific conditions
+using boolean indexing. Boolean indexing allows us to create true and 
+false values based on a condition.
+arr = np.array([1, 2, 3, 4, 5])
+# Define a condition (boolean mask)
+condition = (arr > some_value)  
+# Use the condition to access elements
+selected_elements = arr[condition]

@@ -244,3 +244,51 @@ print(np.random.randn(1,2))
 
 '''
 
+#    ZERO LIKE
+'''
+Creates give df shape 0 numpy array with same
+data type
+
+import numpy as np 
+a=np.array([[1,2],[3,4],[5,6],[7,8]],
+dtype=np.float64
+)
+b=np.zeros_like(a)
+print(b)
+
+OUTPUT:
+[[0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]]
+'''
+
+#   WHERE 
+'''
+Helps to replace values with some condition
+
+import numpy as np 
+a=np.array([[1,2],[3,4],[5,6],[7,8]],
+dtype=np.float64
+)
+b=np.where(a%2==0,0,a)
+print(b)
+
+OUTPUT:
+[[1. 0.]
+ [3. 0.]
+ [5. 0.]
+ [7. 0.]]
+'''
+
+#   ACCESSING NUMPY ARRAY ELEMENT WITH CONDITION
+'''
+import numpy as np 
+a=np.array([[1,2],[3,4],[5,6],[7,8]],
+dtype=np.float64
+)
+print(a[a>2])
+
+OUTPUT:
+[3. 4. 5. 6. 7. 8.]
+'''

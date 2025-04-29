@@ -1891,3 +1891,11 @@ OUTPUT:
 4  2  2  False  False  False   True
 '''
 
+#     ASSIGN, INSERT FOR ADDING COLUMNS
+'''
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+data.insert(3,column='g',value=[1,2,3,4,5])# adds new column to original df returns None
+print(data.assign(h=[1,2,3,4,5])) # Adds new column and returns the updated df doesn't effect the original df  
+print(data)
+'''

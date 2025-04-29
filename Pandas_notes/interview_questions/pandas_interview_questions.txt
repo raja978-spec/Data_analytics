@@ -146,3 +146,40 @@ In case we want to add a prefix or suffix to the column names,
 we can use the add_prefix() or add_suffix() methods.
 DataFrame.add_prefix(prefix='PREFIX_')
 DataFrame.add_suffix(suffix='_suffix')
+
+14. How to add an Index, Row, or Column to an Existing Dataframe?
+Ans: Adding Index
+We can add an index to an existing dataframe by using the Pandas 
+set_index() method which is used to set a list, series, or 
+dataframe as the index of a dataframe. The set_index() method 
+has the following syntax:
+df.set_index(keys, drop=True, 
+append=False, inplace=False, 
+verify_integrity=False)
+Adding Rows
+The df.loc[] is used to access a group of rows or columns 
+and can be used to add a row to a dataframe.
+DataFrame.loc[Row_Index]=new_row
+We can also add multiple rows in a dataframe by using 
+pandas.concat() function which takes a list of dataframes 
+to be added together.
+pandas.concat([Dataframe1,Dataframe2])
+Adding Columns
+We can add a column to an existing dataframe by 
+just declaring the column name and the list or 
+dictionary of values.
+DataFrame[data] = list_of_values
+Another way to add a column is by using df.insert() 
+method which take a value where the column should be added, 
+column name and the value of the column as parameters.
+DataFrameName.insert(col_index, col_name, value)
+We can also add a column to a dataframe by using df.assign() function
+DataFrame.assign(**kwargs)
+
+Q15. How to Delete an Index, Row, or Column from an Existing DataFrame?
+Ans: We can delete a row or a column from a dataframe by using 
+df.drop() method. and provide the row or column name as the parameter.
+To delete a column
+DataFrame.drop(['Column_Name'], axis=1)
+To delete a row
+DataFrame.drop([Row_Index_Number], axis=0)
