@@ -183,3 +183,21 @@ To delete a column
 DataFrame.drop(['Column_Name'], axis=1)
 To delete a row
 DataFrame.drop([Row_Index_Number], axis=0)
+
+Q16. How to set the Index in a Panda dataFrame?
+Ans: We can set the index to a Pandas dataframe by using the 
+set_index() method, which is used to set a list, series, 
+or dataframe as the index of a dataframe.
+DataFrame.set_index('Column_Name')
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+data =data.set_index('z') # returns new set indexed df
+print(data)
+OUTPUT:
+    x  y
+z
+hi  1  1
+j   2  2
+l   5  7
+l   6  4
+o   2  2

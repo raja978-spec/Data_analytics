@@ -1899,3 +1899,24 @@ data.insert(3,column='g',value=[1,2,3,4,5])# adds new column to original df retu
 print(data.assign(h=[1,2,3,4,5])) # Adds new column and returns the updated df doesn't effect the original df  
 print(data)
 '''
+
+#   SETTING COLUMNS VALUES AS INDEX USING SET_INDEX
+'''
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+data =data.set_index('z') # returns new set indexed df
+print(data)
+
+OUTPUT:
+    x  y
+z
+hi  1  1
+j   2  2
+l   5  7
+l   6  4
+o   2  2
+'''
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+data =data.set_index('z') # returns new set indexed df
+print(data)

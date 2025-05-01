@@ -283,6 +283,8 @@ OUTPUT:
 
 #   ACCESSING NUMPY ARRAY ELEMENT WITH CONDITION
 '''
+We can't specify conditions with and
+
 import numpy as np 
 a=np.array([[1,2],[3,4],[5,6],[7,8]],
 dtype=np.float64
@@ -291,4 +293,25 @@ print(a[a>2])
 
 OUTPUT:
 [3. 4. 5. 6. 7. 8.]
+'''
+
+#          SORT IN NUMPY ROW AND COLUMNS
+'''
+import numpy as np 
+a=np.array([[435,455],[4,53],[645,355],[535,8]],
+dtype=np.float64
+)
+print(np.sort(a,axis=0)) # sorts columns
+print(np.sort(a,axis=1))# sorts row
+
+OUTPUT:
+[[  4.   8.]
+ [435.  53.]
+ [535. 355.]
+ [645. 455.]]
+
+[[435. 455.]
+ [  4.  53.]
+ [355. 645.]
+ [  8. 535.]]
 '''

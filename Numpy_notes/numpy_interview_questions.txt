@@ -122,3 +122,16 @@ arr = np.array([1, 2, 3, 4, 5])
 condition = (arr > some_value)  
 # Use the condition to access elements
 selected_elements = arr[condition]
+
+15. What are some common data types supported by NumPy?
+In NumPy there are so many data types that are used to specify 
+the type of data which stored in array. This data 
+type provide control that how data stored in memory 
+during operations.Some common data types supported by NumPy 
+include:
+int
+float
+complex
+bool
+object
+datetime
