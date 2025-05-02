@@ -201,3 +201,13 @@ j   2  2
 l   5  7
 l   6  4
 o   2  2
+
+17. How to reset index in pandas dataFrame?
+The index of Pandas dataframes can be reset by using the reset_index() 
+method. It can be used to simply reset the index to the default integer 
+index beginning at 0.
+In Pandas, reset_index() method is used to reset the index of a 
+DataFrame. By default, it creates a new integer-based index starting 
+from 0, making the DataFrame easier to work with in various scenarios, 
+especially after performing operations like filtering, grouping or 
+multi-level indexing.

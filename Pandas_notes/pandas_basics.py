@@ -1916,7 +1916,36 @@ l   5  7
 l   6  4
 o   2  2
 '''
+
+#      RESET INDEX
+'''
+The index of Pandas dataframes can be reset by using the reset_index() 
+method. It can be used to simply reset the index to the default integer 
+index beginning at 0.
+
 import pandas as pd
-data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
-data =data.set_index('z') # returns new set indexed df
+data = pd.DataFrame(
+    {'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']}
+    ,index=['a','b','c','d','e']
+    )
+data =data[data['y']==2]
 print(data)
+print(data.reset_index())
+
+OUTPUT:
+   x  y  z
+b  2  2  j
+e  2  2  o
+  index  x  y  z
+0     b  2  2  j
+1     e  2  2  o
+'''
+
+import pandas as pd
+data = pd.DataFrame(
+    {'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']}
+    ,index=['a','b','c','d','e']
+    )
+data =data[data['y']==2]
+print(data)
+print(data.reset_index())

@@ -315,3 +315,29 @@ OUTPUT:
  [355. 645.]
  [  8. 535.]]
 '''
+
+#       VSTACK
+'''
+Helps to add new arrays as rows to existing array
+
+import numpy as np 
+a=np.array([[435,455],[4,53],[645,355],[535,8]])
+b=np.array([[5,5],[4,5],[6,35],[35,85]])
+comb = np.vstack(a,b)
+print(comb)
+
+OUTPUT:
+[[435 455]
+ [  4  53]
+ [645 355]
+ [535   8]
+ [  5   5]
+ [  4   5]
+ [  6  35]
+ [ 35  85]]
+'''
+import numpy as np 
+a=np.array([[435,455],[4,53],[645,355],[535,8]])
+b=np.array([[5,5],[4,5],[6,35],[35,85]])
+comb = np.vstack(tup=(a,b))
+print(comb)

@@ -135,3 +135,9 @@ complex
 bool
 object
 datetime
+
+16. How can you concatenate two NumPy arrays vertically?
+We can concatenate two NumPy arrays vertically (along the rows) 
+using the np.vstack() function or the np.concatenate() function 
+with the axis parameter set to 0. Here's how to do it with 
+both methods:
