@@ -1941,11 +1941,25 @@ e  2  2  o
 1     e  2  2  o
 '''
 
+#      RETERIVING DATA WITH STR IN SERIES
+'''
 import pandas as pd
 data = pd.DataFrame(
-    {'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']}
-    ,index=['a','b','c','d','e']
+    {'x':['hello','hellohi','goodmorninghishelo'],
+     'y':['hello','hellohi','goodmorninghishelo']
+     }
     )
-data =data[data['y']==2]
-print(data)
-print(data.reset_index())
+print(data[data['x'].str.contains('hello')])
+
+OUTPUT:
+         x        y
+0    hello    hello
+1  hellohi  hellohi
+'''
+import pandas as pd
+data = pd.DataFrame(
+    {'x':['hello','hellohi','goodmorninghishelo'],
+     'y':['hello','hellohi','goodmorninghishelo']
+     }
+    )
+print(data[data['x'].str.contains('hello')])
