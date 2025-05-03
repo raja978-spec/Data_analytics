@@ -336,8 +336,14 @@ OUTPUT:
  [  6  35]
  [ 35  85]]
 '''
+
+#   ACCESSING 2D ARRAY WITH ELEMENTS
+'''
+SYNTAX:
+array_name[[start_row_no,end_row_no],:]
+
 import numpy as np 
-a=np.array([[435,455],[4,53],[645,355],[535,8]])
-b=np.array([[5,5],[4,5],[6,35],[35,85]])
-comb = np.vstack(tup=(a,b))
-print(comb)
+a=np.array([[435,45,5],[4,5,3],[645,35,5],[5,35,8]])
+a[[0,-1],:] = a[[-1,0],:]
+print(a)
+'''
