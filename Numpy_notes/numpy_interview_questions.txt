@@ -141,3 +141,11 @@ We can concatenate two NumPy arrays vertically (along the rows)
 using the np.vstack() function or the np.concatenate() function 
 with the axis parameter set to 0. Here's how to do it with 
 both methods:
+
+17. What is the significance of the random module in NumPy?
+Here's a brief explanation of the significance of the random 
+module in Python:
+Random Number Generation
+Random Sequences
+Probability Distributions
+Random Choices

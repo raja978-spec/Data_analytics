@@ -211,3 +211,9 @@ DataFrame. By default, it creates a new integer-based index starting
 from 0, making the DataFrame easier to work with in various scenarios, 
 especially after performing operations like filtering, grouping or 
 multi-level indexing.
+
+18. How to Find the Correlation Using Pandas?
+Ans: Pandas dataframe.corr() method is used to find the 
+correlation of all the columns of a dataframe. 
+It automatically ignores any missing or non-numerical values.
+DataFrame.corr()
