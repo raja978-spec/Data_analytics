@@ -347,3 +347,6 @@ a=np.array([[435,45,5],[4,5,3],[645,35,5],[5,35,8]])
 a[[0,-1],:] = a[[-1,0],:]
 print(a)
 '''
+import numpy as np
+
+print(np.random.normal)

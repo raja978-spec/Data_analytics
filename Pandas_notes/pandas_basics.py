@@ -1956,10 +1956,59 @@ OUTPUT:
 0    hello    hello
 1  hellohi  hellohi
 '''
+
+#                 ITERTUPLES, ITERROWS
+'''
+
 import pandas as pd
 data = pd.DataFrame(
     {'x':['hello','hellohi','goodmorninghishelo'],
      'y':['hello','hellohi','goodmorninghishelo']
      }
     )
-print(data[data['x'].str.contains('hello')])
+for i in data.itertuples():
+    print(i)
+
+for i in data.iterrows():
+    print(i)
+
+OUTPUT:
+Pandas(Index=0, x='hello', y='hello')
+Pandas(Index=1, x='hellohi', y='hellohi')
+Pandas(Index=2, x='goodmorninghishelo', y='goodmorninghishelo')
+(0, x    hello
+y    hello
+Name: 0, dtype: object)
+(1, x    hellohi
+y    hellohi
+Name: 1, dtype: object)
+(2, x    goodmorninghishelo
+y    goodmorninghishelo
+Name: 2, dtype: object)
+'''
+#           ITERROW, ITERTUPLES
+'''
+import pandas as pd
+data = pd.DataFrame(
+    {'x':['hello','hellohi','goodmorninghishelo'],
+     'y':['hello','hellohi','goodmorninghishelo']
+     }
+    )
+for i in data.itertuples(): # Reterives data with index
+    print(i)
+
+for i in data.iterrows(): # Returns iterators in
+    print(i)
+
+'''
+import pandas as pd
+data = pd.DataFrame(
+    {'x':['hello','hellohi','goodmorninghishelo'],
+     'y':['hello','hellohi','goodmorninghishelo']
+     }
+    )
+for i in data.itertuples(): # Reterives data with index
+    print(i)
+
+for i in data.iterrows(): # Returns iterators in
+    print(i)

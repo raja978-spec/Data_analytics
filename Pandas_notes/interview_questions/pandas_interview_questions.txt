@@ -217,3 +217,32 @@ Ans: Pandas dataframe.corr() method is used to find the
 correlation of all the columns of a dataframe. 
 It automatically ignores any missing or non-numerical values.
 DataFrame.corr()
+
+19. How to Iterate over Dataframe in Pandas?
+Using iter tuple and row we can iterate over df data 
+EX:
+import pandas as pd
+data = pd.DataFrame(
+    {'x':['hello','hellohi','goodmorninghishelo'],
+     'y':['hello','hellohi','goodmorninghishelo']
+     }
+    )
+for i in data.itertuples(): # Retrieves data with index
+    print(i)
+
+for i in data.iterrows(): # Returns iterators as tuple
+    print(i)
+
+OUTPUT:
+Pandas(Index=0, x='hello', y='hello')
+Pandas(Index=1, x='hellohi', y='hellohi')
+Pandas(Index=2, x='goodmorninghishelo', y='goodmorninghishelo')
+(0, x    hello
+y    hello
+Name: 0, dtype: object)
+(1, x    hellohi
+y    hellohi
+Name: 1, dtype: object)
+(2, x    goodmorninghishelo
+y    goodmorninghishelo
+Name: 2, dtype: object)
