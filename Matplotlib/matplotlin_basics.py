@@ -670,3 +670,53 @@ plt.title('Fourth Movement business decision')
 plt.show()
 
 '''
+
+#   CLA and CLOSE METHOD in PLT
+'''
+Cla - clear current axis, without this chart data might get 
+      overlapped to next charts, so instead of showing single
+      analysis on each function first function's
+      chart data getting appended to second, and first, second
+      charts getting appended to third one
+
+Close - closes the current chart process
+
+EX:
+
+import matplotlib.pyplot as plt
+
+def generate_year_sales_report():
+    plt.clf()  # Clear the current figure
+    # or use plt.figure().clf() if you're using figure object
+
+    # Your plotting code here
+    plt.bar(['2024', '2025'], [100, 200])
+    plt.title("Yearly Sales")
+    plt.savefig("year_sales.jpg")
+    plt.close()  # Important: closes the figure and frees memory
+
+def generate_month_sales_report():
+    plt.clf()  # Clear the current figure
+    # or use plt.figure().clf() if you're using figure object
+
+    # Your plotting code here
+    plt.bar(['Jan', 'Feb'], [100, 200])
+    plt.title("Month Sales")
+    plt.savefig("month_sales.jpg")
+    plt.close()  # Important: closes the figure and frees memory
+
+def generate_week_sales_report():
+    plt.clf()  # Clear the current figure
+    # or use plt.figure().clf() if you're using figure object
+
+    # Your plotting code here
+    plt.bar(['1', '2'], [100, 200])
+    plt.title("Week Sales")
+    plt.savefig("week_sales.jpg")
+    plt.close()  # Important: closes the figure and frees memory
+
+generate_year_sales_report()
+generate_month_sales_report()
+generate_week_sales_report()
+
+'''
