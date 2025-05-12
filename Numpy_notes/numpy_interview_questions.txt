@@ -149,3 +149,25 @@ Random Number Generation
 Random Sequences
 Probability Distributions
 Random Choices
+
+18. How can you generate random numbers following a normal distribution using NumPy?
+normal distributed data will have bell shaped curve that has balanced
+values from left and right side of the curve without any swekness. To 
+create those type of random no in numpy can use np.random.normal(loc=mean_value,
+scale=std_value, size=no_of_random_no_want_to_generate_or
+                    shape)
+The below example generates 1000 random normal distributed 
+no which has a mean value of 50, and the variance value of 10
+EX:
+import numpy as np
+import matplotlib.pyplot as plt
+# Generate 1000 random numbers from a normal distribution
+data = np.random.normal(loc=50, scale=10, size=(100,100))
+print(data)
+# Plotting the histogram
+plt.hist(data, bins=30, edgecolor='black')
+plt.title('Normal Distribution (mean=50, std=10)')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
+

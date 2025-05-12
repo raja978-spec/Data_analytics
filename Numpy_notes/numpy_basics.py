@@ -24,6 +24,22 @@ from numpy import random
 print(random.randint(10,100)) # returns single random value
 
 y = np.random.randint(100, size=(3)) # creates 3 random values
+
+              
+    GENERATING NORMALLY DISTRIBUTED RANDOM NUMPY ARRAY
+
+import numpy as np
+import matplotlib.pyplot as plt
+# Generate 1000 random numbers from a normal distribution
+data = np.random.normal(loc=50, scale=10, size=(100,100))
+print(data)
+# Plotting the histogram
+plt.hist(data, bins=30, edgecolor='black')
+plt.title('Normal Distribution (mean=50, std=10)')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
+
 '''
 
 #                  NUMPY ARRAY ADVANTAGE
@@ -347,6 +363,3 @@ a=np.array([[435,45,5],[4,5,3],[645,35,5],[5,35,8]])
 a[[0,-1],:] = a[[-1,0],:]
 print(a)
 '''
-import numpy as np
-
-print(np.random.normal)
