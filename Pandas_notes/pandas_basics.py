@@ -2001,14 +2001,29 @@ for i in data.iterrows(): # Returns iterators in
     print(i)
 
 '''
+
+#               UNIQUE
+'''
+Helps to find the unique values in a series 
+
 import pandas as pd
 data = pd.DataFrame(
-    {'x':['hello','hellohi','goodmorninghishelo'],
-     'y':['hello','hellohi','goodmorninghishelo']
+    {'x':['hello','hellohi','goodmorninghishelo','hellohi','hellohi','goodmorninghishelo'],
+     'y':[1,1,2,2,3,3]
      }
     )
-for i in data.itertuples(): # Reterives data with index
-    print(i)
+print(data['x'].unique())
+print(data['y'].unique())
 
-for i in data.iterrows(): # Returns iterators in
-    print(i)
+OUTPUT:
+['hello' 'hellohi' 'goodmorninghishelo']
+[1 2 3]
+'''
+import pandas as pd
+data = pd.DataFrame(
+    {'x':['hello','hellohi','goodmorninghishelo','hellohi','hellohi','goodmorninghishelo'],
+     'y':[1,1,2,2,3,3]
+     }
+    )
+print(data['x'].unique())
+print(data['y'].unique())
