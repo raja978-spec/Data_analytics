@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+ss=['y','n','y','n','n','y','y','n','n','y']
 exam_data={
     'name':['a','a','s','r','l','m','r','k','b','c'],
     'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
@@ -10,6 +10,6 @@ exam_data={
 labels = ["A","B",'C','D','E','F','G','H','I','J']
 
 df = pd.DataFrame(exam_data,index=labels)
-df.loc['L'] = ['R',16,2,'y']
-df.drop('', inplace=True)
-print(df)
+df=df.reindex(columns=['score','qualify','new_column'],
+              labels=['A','B','new_row'])
+print(df.to_string())

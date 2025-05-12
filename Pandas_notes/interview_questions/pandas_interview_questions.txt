@@ -119,12 +119,35 @@ It has the following syntax:
 df.iloc[:n]
 
 11. What is Reindexing in Pandas?
-Ans: Reindexing in Pandas as the name suggests means changing the 
-index of the rows and columns of a dataframe. It can be done by 
-using the Pandas reindex() method. In case of missing values or 
-new values that are not present in the dataframe, the reindex() 
-method assigns it as NaN.
-df.reindex(new_index)
+🔁 reindex() in pandas is used to:
+Change the order of rows or columns
+Add new rows or columns (which will have NaN if not present in original)
+Align data to a new index
+df.reindex(labels=new_index_list or 
+existing_index_list_to_reorder
+, columns=new_column_list or existing_column_list_to_reorder)
+EX:
+import numpy as np
+import pandas as pd
+ss=['y','n','y','n','n','y','y','n','n','y']
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+df=df.reindex(columns=['score','qualify','new_column'],
+              labels=['A','B','new_row'])
+print(df)
+OUTPUT:
+         score qualify  new_column
+A         15.5       y         NaN
+B          9.0       n         NaN
+new_row    NaN     NaN         NaN
+
 
 12. How to Select a Single Column of a DataFrame?
 Ans: There are many ways to Select a single column of a dataframe. They are as follows:
@@ -246,3 +269,13 @@ Name: 1, dtype: object)
 (2, x    goodmorninghishelo
 y    goodmorninghishelo
 Name: 2, dtype: object)
+
+20. What are the Important Conditions Before Iterating Over a Pandas DataFrame?
+Avoid iteration when possible—Pandas offers built-in functions that are 
+faster and more efficient.
+Use to_string() for displaying the DataFrame in a readable 
+tabular format instead of looping.
+For better performance, prefer vectorized operations over iteration.
+Use apply() when applying a function to selected rows, as it's more 
+efficient than looping through each row.
+
