@@ -171,3 +171,28 @@ plt.xlabel('Value')
 plt.ylabel('Frequency')
 plt.show()
 
+Q.19 What is Matrix Inversion in NumPy?
+An inverse matrix is a matrix that, when multiplied by the 
+original matrix, gives the identity matrix. It undoes the operation like
+removing the added brightness to a image
+Conditions for a matrix to have an inverse:
+It must be a square matrix (same number of rows and columns).
+Its determinant must not be zero (i.e., 
+det(𝐴)≠0
+Example:
+Let 𝐴 =[2 3
+        1 4]
+To find the inverse 𝐴−1 use the formula for a 2×2 matrix:
+A−1 = 1/det(A)[d −b
+              −c a]
+A=[a b 
+   c d]
+A = [4 -3
+    -1  -2]
+det(A) = 2*4-3*1 = 8-3 =5
+det(A) is not 0 so this is inverse matrix
+USE OF THIS INVERSE MATRIX IN ML
+Used to find the best fit line in linear regression by finding 
+the below teta values for each feature in a dataset.
+θ = (XᵗX)⁻¹ Xᵗ y 
+

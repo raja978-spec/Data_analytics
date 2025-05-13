@@ -363,3 +363,18 @@ a=np.array([[435,45,5],[4,5,3],[645,35,5],[5,35,8]])
 a[[0,-1],:] = a[[-1,0],:]
 print(a)
 '''
+
+#      INVERSE MATRIX ON LINEAR ALGEBRA
+'''
+import numpy as np 
+a=np.array([[435,45,5],[4,5,3],[645,35,5]])
+print(np.linalg.inv(a))
+
+OUTPUT:
+[[-0.00222531 -0.00139082  0.00305981]
+ [ 0.05326843 -0.02920723 -0.03574409]
+ [-0.08581363  0.38386648  0.05549374]]
+'''
+import numpy as np 
+a=np.array([[435,45,5],[4,5,3],[645,35,5]])
+print(np.linalg.inv(a))
