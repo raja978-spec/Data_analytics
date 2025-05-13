@@ -279,3 +279,11 @@ For better performance, prefer vectorized operations over iteration.
 Use apply() when applying a function to selected rows, as it's more 
 efficient than looping through each row.
 
+21.What is Categorical Data and How it is represented in Pandas?
+Ans: Categorical data is a set of predefined data values under some 
+categories. It usually has a limited and fixed range of possible 
+values and can be either numerical or textual in nature. 
+A few examples of categorical data are gender, educational 
+qualifications, blood type, country affiliation, observatio
+n time, etc. In Pandas categorical data is often represented 
+by Object datatype.
