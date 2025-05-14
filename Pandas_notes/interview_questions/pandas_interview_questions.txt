@@ -287,3 +287,9 @@ A few examples of categorical data are gender, educational
 qualifications, blood type, country affiliation, observatio
 n time, etc. In Pandas categorical data is often represented 
 by Object datatype.
+
+22. How can a DataFrame be Converted to an Excel File?
+Ans: A Pandas dataframe can be converted to an Excel file by 
+using the to_excel() function which takes the file name as the 
+parameter. We can also specify the sheet name in this function.
+DataFrame.to_excel(file_name)
