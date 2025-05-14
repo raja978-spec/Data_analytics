@@ -196,3 +196,10 @@ Used to find the best fit line in linear regression by finding
 the below teta values for each feature in a dataset.
 θ = (XᵗX)⁻¹ Xᵗ y 
 
+20 Define the mean function in NumPy.
+The arithmetic mean (average) in NumPy can be calculated using 
+numpy.mean(). This method tallies elements in an array, whether 
+it be along a specified axis or the whole array, if no axis is 
+explicitly mentioned. The summation of all elements is then divided 
+by the overall number of elements, which provides the average.
+numpy.mean(a, axis=None)
