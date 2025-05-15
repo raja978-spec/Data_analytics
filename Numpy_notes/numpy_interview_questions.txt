@@ -203,3 +203,17 @@ it be along a specified axis or the whole array, if no axis is
 explicitly mentioned. The summation of all elements is then divided 
 by the overall number of elements, which provides the average.
 numpy.mean(a, axis=None)
+
+20. Convert a Multidimensional Array to a 1D Array in NumPy
+You can flatten a multidimensional array (convert it to 1D) using:
+🔹 1. flatten()
+Returns a copy of the array.
+Modifying the result does not affect the original array.
+import numpy as np
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+flattened = arr.flatten()
+🔹 2. ravel()
+Returns a view (if possible).
+Modifying the result can affect the original array.
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+flattened = arr.ravel()
