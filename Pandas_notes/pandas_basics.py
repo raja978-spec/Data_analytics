@@ -2019,11 +2019,51 @@ OUTPUT:
 ['hello' 'hellohi' 'goodmorninghishelo']
 [1 2 3]
 '''
+
+#        MULTIINDEX
+'''
+Multi-indexing refers to selecting two or more rows or columns in the 
+index. It is a multi-level or hierarchical object for pandas object 
+and deals with data analysis and works with higher dimensional data. 
+
+Multi-indexing in Pandas can be achieved by using a number of 
+functions, such as MultiIndex.from_arrays, MultiIndex.from_tuples, 
+MultiIndex.from_product, MultiIndex.from_frame, etc which helps us 
+to create multiple indexes from arrays, tuples, dataframes, etc.
+
+
+               ASSIGN MULTIPLE COLUMN
+
 import pandas as pd
-data = pd.DataFrame(
-    {'x':['hello','hellohi','goodmorninghishelo','hellohi','hellohi','goodmorninghishelo'],
-     'y':[1,1,2,2,3,3]
-     }
-    )
-print(data['x'].unique())
-print(data['y'].unique())
+columns = pd.MultiIndex.from_product([['Month 1', 'Month2'],['Pencil','Pen']])
+sales = pd.DataFrame([[20,30,33,40],
+                      [25,55,50,80]], columns=columns)
+print(sales)
+
+OUTPUT:
+  Month 1     Month2    
+   Pencil Pen Pencil Pen
+0      20  30     33  40
+1      25  55     50  80
+
+Month 1 Pencil 
+        Pen
+Month2 Pencil 
+        Pen
+
+
+        ADDING MORE THAN TWO INDEX
+import pandas as pd
+index = pd.MultiIndex.from_tuples([('Month1','Pen'),
+                                   ('Month3','Pen')]
+                                   ,names=['Months','Item name'])
+sales = pd.DataFrame({'sales':[20,50]}, index=index)
+print(sales)
+
+OUTPUT:
+Months Item name
+Month1 Pen           20
+Month3 Pen           50
+'''
+
+

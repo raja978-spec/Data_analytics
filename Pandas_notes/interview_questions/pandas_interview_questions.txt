@@ -293,3 +293,13 @@ Ans: A Pandas dataframe can be converted to an Excel file by
 using the to_excel() function which takes the file name as the 
 parameter. We can also specify the sheet name in this function.
 DataFrame.to_excel(file_name)
+
+23. What is Multi-Indexing in Pandas?
+Ans: Multi-indexing refers to selecting two or more rows or columns in 
+the index. It is a multi-level or hierarchical object for pandas object 
+and deals with data analysis and works with higher dimensional data. 
+Multi-indexing in Pandas can be achieved by using a number of functions, 
+such as MultiIndex.from_arrays, MultiIndex.from_tuples, 
+MultiIndex.from_product, MultiIndex.from_frame, etc which 
+helps us to create multiple indexes from arrays, tuples, 
+dataframes, etc.
