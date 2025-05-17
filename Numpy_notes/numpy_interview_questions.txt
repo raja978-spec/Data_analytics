@@ -217,3 +217,10 @@ Returns a view (if possible).
 Modifying the result can affect the original array.
 arr = np.array([[1, 2, 3], [4, 5, 6]])
 flattened = arr.ravel()
+
+21. Write a NumPy code snippet to create an array of zeros.
+With the help of numpy.zeros() function we can create an array of 
+zeros in numpy. it help us to specify the shape and data type of 
+the resulting array.
+Create a 1D array of zeros with a specified length (e.g., 5)
+zeros_1d = np.zeros(5)
