@@ -303,3 +303,51 @@ such as MultiIndex.from_arrays, MultiIndex.from_tuples,
 MultiIndex.from_product, MultiIndex.from_frame, etc which 
 helps us to create multiple indexes from arrays, tuples, 
 dataframes, etc.
+
+24. How to select Specific Data-types to Include or Exclude in the 
+DataFrame?
+Ans: The Pandas select_dtypes() method is used to include or 
+exclude a specific type of data in the dataframe. The datatypes to 
+include or exclude are specified to it as a list or parameters to 
+the function. It has the following syntax:
+DataFrame.select_dtypes(include=['object','float'], exclude =['int'])
+
+25.DIFFERENCE BETWEEN MERGE, JOIN, CONCAT
+Merge - works like sql inner,left,right join, combines
+        data with column keys
+Join - works like merge but it combines data with row keys 
+       or index
+Concat - Appends df data for common column name, add new column
+         if common column is not exist.
+
+26.How to use fill nan values in pandas?
+df.fillna(values)
+
+27.How to drop duplicate row from dataframe and drop
+duplicate element from single series
+series.drop_duplicates()
+df.drop_duplicates()
+Both drops records on original variable.
+
+28.How can we change categorial values to bool in pandas?
+get_dummies() helps to get only numeric values from a dataset and also
+it retruns bool values for categorial values if the value 
+belongs to that particular row
+
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+print(data)
+print(pd.get_dummies(data))
+OUTPUT:
+   x  y   z
+0  1  1  hi
+1  2  2   j
+2  5  7   l
+3  6  4   l
+4  2  2   o
+   x  y   z_hi    z_j    z_l    z_o
+0  1  1   True  False  False  False
+1  2  2  False   True  False  False
+2  5  7  False  False   True  False
+3  6  4  False  False   True  False
+4  2  2  False  False  False   True

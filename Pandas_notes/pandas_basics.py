@@ -1917,7 +1917,7 @@ l   6  4
 o   2  2
 '''
 
-#      RESET INDEX
+#               RESET INDEX
 '''
 The index of Pandas dataframes can be reset by using the reset_index() 
 method. It can be used to simply reset the index to the default integer 
@@ -2020,7 +2020,7 @@ OUTPUT:
 [1 2 3]
 '''
 
-#        MULTIINDEX
+#                      MULTIINDEX
 '''
 Multi-indexing refers to selecting two or more rows or columns in the 
 index. It is a multi-level or hierarchical object for pandas object 
@@ -2065,5 +2065,37 @@ Months Item name
 Month1 Pen           20
 Month3 Pen           50
 '''
+
+#   GET SPECIFIC DATA TYPE VALUES IN PANDAS USING SELECT DTYPES
+'''
+
+import pandas as pd
+data = pd.DataFrame({'x':[1,2,5,6,2],'y':[1,2,7,4,2],'z':['hi','j','l','l','o']})
+print(data)
+print(data.select_dtypes(include=['int']))
+print(data.select_dtypes(exclude=['object']))
+
+OUTPUT:
+   x  y   z
+0  1  1  hi
+1  2  2   j
+2  5  7   l
+3  6  4   l
+4  2  2   o
+
+   x  y
+0  1  1
+1  2  2
+2  5  7
+3  6  4
+4  2  2
+
+   x  y
+0  1  1
+1  2  2
+2  5  7
+3  6  4
+4  2  2
+'''       
 
 
