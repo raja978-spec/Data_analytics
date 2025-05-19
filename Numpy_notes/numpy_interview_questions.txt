@@ -224,3 +224,13 @@ zeros in numpy. it help us to specify the shape and data type of
 the resulting array.
 Create a 1D array of zeros with a specified length (e.g., 5)
 zeros_1d = np.zeros(5)
+
+22. How can you identify outliers in a NumPy array?
+Identifying and removing outliers in a NumPy array involves 
+several steps. Outliers are data points that significantly deviate from the majority of the data and can adversely affect the results of data analysis. Here's a general approach to identify and remove outliers:
+Identifying Outliers:
+Calculate Descriptive Statistics: Compute basic statistics 
+like the mean and standard deviation of the array to understand the 
+central tendency and spread of the data.
+Define a Threshold:
+Decide on a threshold where data points are considered outliers.
