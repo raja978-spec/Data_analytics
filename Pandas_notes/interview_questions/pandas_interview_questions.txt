@@ -351,3 +351,16 @@ OUTPUT:
 2  5  7  False  False   True  False
 3  6  4  False  False   True  False
 4  2  2  False  False  False   True
+
+
+25. How to Convert a DataFrame into a Numpy Array?
+Ans: Pandas Numpy is an inbuilt Python package that is used 
+to perform large numerical computations. It is used for 
+processing multidimensional array elements to perform 
+complicated mathematical operations.
+The pandas dataframe can be converted to a NumPy array by using the 
+to_numpy() method. We can also provide the datatype as an optional 
+argument.
+Dataframe.to_numpy()
+We can also use .values to convert dataframe values to NumPy array
+df.values
