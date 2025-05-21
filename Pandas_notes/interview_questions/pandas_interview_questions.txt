@@ -10,10 +10,14 @@ Series - 1D labelled array can hold any data type.
 DF - 2D tabular form data, has row, columns 
 
 3. List Key Features of Pandas.
-Easy handling missing values
-Integrated with numpy
-Reshape of data is Easy
-Has group by functions
+Fast and efficient data manipulation and analysis
+Provides time-series functionality
+Easy missing data handling
+Faster data merging and joining
+Flexible reshaping and pivoting of data sets
+Powerful group by functionality
+Data from different file objects can be loaded
+Integrates with NumPy
 
 4. What is series.
 A Series in Pandas is a one-dimensional labelled array, can hold any 
@@ -364,3 +368,15 @@ argument.
 Dataframe.to_numpy()
 We can also use .values to convert dataframe values to NumPy array
 df.values
+
+26. How to Split a DataFrame according to a Boolean Criterion?
+Ans: Boolean masking is a technique that can be used in Pandas to 
+split a DataFrame depending on a boolean criterion. You may divide 
+different regions of the DataFrame and filter rows depending on a 
+certain criterion using boolean masking.
+# Define the condition
+condition = DataFrame['col_name'] < VALUE 
+# DataFrame with rows where the condition is True
+DataFrame1 = DataFrame[condition] 
+# DataFrame with rows where the condition is False
+DataFrame1 = DataFrame[~condition]
