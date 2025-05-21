@@ -375,6 +375,17 @@ OUTPUT:
  [ 0.05326843 -0.02920723 -0.03574409]
  [-0.08581363  0.38386648  0.05549374]]
 '''
+
+#      REMOVING MISSING VALUES WITH ISNAN
+'''
+Returns bool for each element in numpy array
+
 import numpy as np 
-a=np.array([[435,45,5],[4,5,3],[645,35,5]])
-print(np.linalg.inv(a))
+a=np.array([[435,45,5],[4,0,3],[0,35,5]])
+print(np.isnan(a))
+
+OUTPUT:
+[[False False False]
+ [False False False]
+ [False False False]]
+'''

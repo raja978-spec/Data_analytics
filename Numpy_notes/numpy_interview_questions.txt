@@ -234,3 +234,11 @@ like the mean and standard deviation of the array to understand the
 central tendency and spread of the data.
 Define a Threshold:
 Decide on a threshold where data points are considered outliers.
+
+23. How do you remove missing or null values from a NumPy array?
+Removing missing or null values from NumPy array we can use boolean 
+indexing or the numpy.isnan() function to create a mask that identifies 
+the missing values.
+mask = np.isnan(my_array)
+# Use the mask to filter out missing values
+filtered_array = my_array[mask]
