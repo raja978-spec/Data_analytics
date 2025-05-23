@@ -2098,4 +2098,87 @@ OUTPUT:
 4  2  2
 '''       
 
+#          TIME SERIES FUNCTIONS
+'''
+Time series is a data point specified in time stamp
+Pandas has several functions to work on time series data
+
+data = {
+    'Date': ['2025-01-01 00:00', '2025-01-01 01:00', '2025-01-01 03:00'],
+    'Value': [10, 15, 25]
+}
+df = pd.DataFrame(data)
+
+1. Convert 'Date' column to datetime
+df['Date'] = pd.to_datetime(df['Date'])
+✅ Converts string dates into datetime64 objects so you can perform time-based operations.
+
+2. Set 'Date' as the index
+df.set_index('Date', inplace=True)
+✅ Now the DataFrame is indexed by time, allowing easy resampling and slicing.
+
+3. Resample time series to hourly and sum values, It only works on index
+resampled_df = df.resample('H').sum()
+print(resampled_df)
+✅ Fills in missing timestamps with values as 0.0
+
+In the below example 02:00 hour is the missing one from the dataset
+so it puts the missed hour with 0.0 because we don't have any values
+to perform sum.
+
+OUTPUT:
+                     Value
+Date                      
+2025-01-01 00:00:00   10.0
+2025-01-01 01:00:00   15.0
+2025-01-01 02:00:00    0.0 # This is the missed time that is inserted by resample
+2025-01-01 03:00:00   25.0
+
+
+4. Interpolate missing values
+interpolated_df = resampled_df.interpolate()
+print(interpolated_df)
+✅ This is also like resample but Fills NAN instead of 0.0 it no
+    time is there
+
+OUTPUT:
+
+                     Value
+Date                      
+2025-01-01 00:00:00   10.0
+2025-01-01 01:00:00   15.0
+2025-01-01 02:00:00    NaN # This is the missed time that is inserted by interpolate
+2025-01-01 03:00:00   25.0
+
+
+5. Slice the data based on timestamp range
+sliced_df = interpolated_df.loc['2025-01-01 00:00':'2025-01-01 02:00']
+print(sliced_df)
+✅ Retrieves data only within the given datetime range.
+
+'''
+
+#               SET MISSED DATE KEY WITH RESAMPLE AND AS_FREQ()
+'''
+import pandas as pd
+import numpy as np
+
+# In this exmaple day 2 is missing
+data = {
+    'Date': ['2025-01-01 00:00', '2025-01-01 01:00', '2025-01-03 02:00'],
+    'Value': [10, 15, 25]
+}
+df = pd.DataFrame(data)
+df['Date'] = pd.to_datetime(df['Date'])
+df.set_index('Date', inplace=True)
+
+print(df.resample('D').asfreq())
+
+OUTPUT:
+            Value
+Date
+2025-01-01   10.0
+2025-01-02    NaN # that is added with resample
+2025-01-03    NaN
+'''
 
