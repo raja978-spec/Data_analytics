@@ -242,3 +242,9 @@ the missing values.
 mask = np.isnan(my_array)
 # Use the mask to filter out missing values
 filtered_array = my_array[mask]
+
+24. What is the difference between slicing and indexing in NumPy?
+indexing is used to access individual or specific elements from an array, 
+while slicing is used to create a new array that contains a contiguous 
+subset of elements from the original array based on a specified range 
+of indices.
