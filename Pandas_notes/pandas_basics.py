@@ -2098,7 +2098,7 @@ OUTPUT:
 4  2  2
 '''       
 
-#          TIME SERIES FUNCTIONS
+#                 TIME SERIES FUNCTIONS
 '''
 Time series is a data point specified in time stamp
 Pandas has several functions to work on time series data
@@ -2181,4 +2181,24 @@ Date
 2025-01-02    NaN # that is added with resample
 2025-01-03    NaN
 '''
+
+
+#                    TIME DELTA
+'''
+With the help of the Timedelta data type, you can easily perform 
+arithmetic operations, comparisons, and other time-related 
+manipulations. In terms of different units, such as days, 
+hours, minutes, seconds, milliseconds, and microseconds, it can give 
+durations.
+
+import pandas as pd
+a=pd.Timedelta(days=7, hours=11, minutes=30, seconds=23)
+print(a+ pd.Timedelta('2 days 7 hours 30 minutes'))
+
+OUTPUT:
+9 days 19:00:23
+'''
+
+
+
 

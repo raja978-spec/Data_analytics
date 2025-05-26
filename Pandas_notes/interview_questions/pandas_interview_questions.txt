@@ -380,3 +380,39 @@ condition = DataFrame['col_name'] < VALUE
 DataFrame1 = DataFrame[condition] 
 # DataFrame with rows where the condition is False
 DataFrame1 = DataFrame[~condition]
+
+27. What is Time Series in Pandas?
+Ans: Time series is a collection of data points with timestamps. 
+It depicts the evolution of quantity over time. Pandas provide various 
+functions to handle time series data efficiently. It is used to work 
+with data timestamps, resampling time series for different time periods,
+working with missing data, slicing the data using timestamps, etc.
+Pandas Built-in Function
+Operation
+pandas.to_datetime(DataFrame['Date'])
+Convert 'Date' column of DataFrame to datetime dtype
+DataFrame.set_index('Date', inplace=True)
+Set 'Date' as the index
+DataFrame.resample('H').sum()
+Resample time series to a different frequency (e.g., Hourly, daily, weekly, monthly etc)
+DataFrame.interpolate()
+Fill missing values using linear interpolation
+DataFrame.loc[start_date:end_date]
+Slice the data based on timestamps
+
+28. What is Time Delta in Pandas?
+Ans: The time delta is the difference in dates and time. 
+Similar to the timedelta() object in the datetime module, a 
+Timedelta in Pandas indicates the duration or difference in time. 
+For addressing time durations or time variations in a DataFrame or 
+Series, Pandas has a dedicated data type.
+The time delta object can be created by using the timedelta() 
+method and providing the number of weeks, days, seconds, milliseconds, 
+etc as the parameter.
+Duration = pandas.Timedelta(days=7, hours=4, minutes=30, seconds=23)
+With the help of the Timedelta data type, you can easily perform 
+arithmetic operations, comparisons, and other time-related manipulations. 
+In terms of different units, such as days, hours, minutes, seconds, 
+milliseconds, and microseconds, it can give durations.
+Duration + pandas.Timedelta('2 days 6 hours')
+
