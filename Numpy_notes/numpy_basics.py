@@ -389,3 +389,14 @@ OUTPUT:
  [False False False]
  [False False False]]
 '''
+
+#       FULL IN NP
+'''
+Helps to create same value array
+
+import numpy as np
+print(np.full(5,6)) 
+
+OUTPUT: 
+[6 6 6 6 6]
+'''

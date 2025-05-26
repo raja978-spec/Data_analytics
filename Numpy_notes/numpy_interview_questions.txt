@@ -248,3 +248,16 @@ indexing is used to access individual or specific elements from an array,
 while slicing is used to create a new array that contains a contiguous 
 subset of elements from the original array based on a specified range 
 of indices.
+
+25. How can you create array with same values.
+Using numpy.full():
+You can use the numpy.full() function to create an array 
+filled with a specific value. This function takes 
+two arguments: the shape of the array and the fill value.'
+Using Broadcasting:
+If you want to create an array of the same value repeated 
+multiple times, you can use broadcasting with NumPy.
+# Create a 1D array with 5 elements, all set to 7
+arr = 7 * np.ones(5)
+# Create a 2D array with dimensions 3x4, all elements set to 2.0
+arr_2d = 2.0 * np.ones((3, 4))
