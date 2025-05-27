@@ -2199,6 +2199,24 @@ OUTPUT:
 9 days 19:00:23
 '''
 
+#           AGG FUNCTION IN PANDAS
+'''
+Helps to do multiple aggregation operation on single column.
+
+import pandas as pd
+a= pd.DataFrame({
+    'col_1':[12,4,2,3],
+    'col_2':[6,5,45,3],
+    'col_3':[12,4,2,3]
+})
+print(a.agg({'col_1':['sum','min','max']}))
+
+OUTPUT:
+     col_1
+sum     21
+min      2
+max     12
+'''
 
 
 

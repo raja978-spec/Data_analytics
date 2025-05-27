@@ -416,3 +416,16 @@ In terms of different units, such as days, hours, minutes, seconds,
 milliseconds, and microseconds, it can give durations.
 Duration + pandas.Timedelta('2 days 6 hours')
 
+29. What is Data Aggregation in Pandas?
+In Pandas, data aggregation refers to the act of summarizing 
+or decreasing data in order to produce a consolidated view or 
+summary statistics of one or more columns in a dataset. In order to 
+calculate statistical measures like sum, mean, minimum, maximum, 
+count, etc., aggregation functions must be applied to groups or 
+subsets of data.
+The agg() function in Pandas is frequently used to aggregate data. 
+Applying one or more aggregation functions to one or more columns 
+in a DataFrame or Series is possible using this approach. Pandas' 
+built-in functions or specially created user-defined functions can 
+be used as aggregation functions.
+DataFrame.agg({'Col_name1': ['sum', 'min', 'max'], 'Col_name2': 'count'})
