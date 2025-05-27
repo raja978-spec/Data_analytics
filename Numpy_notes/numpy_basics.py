@@ -400,3 +400,15 @@ print(np.full(5,6))
 OUTPUT: 
 [6 6 6 6 6]
 '''
+
+#       NUMPY AS_TYPE 
+'''
+Helps to change the type of a an numpy array.
+
+import numpy as np
+
+a=np.array([1,2,4,4])
+print(a.astype(float)) # Returns the converted data
+#a.dtype=float
+print(a)
+'''

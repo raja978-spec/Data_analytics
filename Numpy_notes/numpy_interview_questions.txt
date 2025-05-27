@@ -261,3 +261,20 @@ multiple times, you can use broadcasting with NumPy.
 arr = 7 * np.ones(5)
 # Create a 2D array with dimensions 3x4, all elements set to 2.0
 arr_2d = 2.0 * np.ones((3, 4))
+
+27. How can you modify the data type of a NumPy array?
+We can modify the data type of a NumPy array using the astype() 
+method or by directly assigning a new data type to the dtype 
+attribute. Here's how you can do it:
+Using the astype() method:
+You can use the astype() method to create a new array 
+with the desired data type while leaving the original 
+array unchanged.
+new_array = original_array.astype(float)
+Directly assigning a new data type to the dtype attribute:
+You can also modify the data type of a NumPy array in 
+place by assigning a new data type directly to the dtype attribute.
+# Create a NumPy array with the original data type (e.g., int)
+original_array = np.array([1, 2, 3, 4, 5])
+# Change the data type of the original array to float
+original_array.dtype = float
