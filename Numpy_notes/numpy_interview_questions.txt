@@ -278,3 +278,17 @@ place by assigning a new data type directly to the dtype attribute.
 original_array = np.array([1, 2, 3, 4, 5])
 # Change the data type of the original array to float
 original_array.dtype = float
+
+28. What is a masked array in NumPy.
+A masked array in NumPy is an array that includes a Boolean mask to 
+mark certain elements as invalid or missing, allowing operations to 
+ignore these elements without altering the original data. It is helpful 
+for handling real-world datasets with missing or unreliable values.
+EX:
+import numpy as np
+import numpy.ma as ma
+a=np.array([1,2,-43,2])
+b=ma.masked_equal(a,-43) # masked the value which is equal to -43
+print(b)
+
+
