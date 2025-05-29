@@ -429,3 +429,13 @@ in a DataFrame or Series is possible using this approach. Pandas'
 built-in functions or specially created user-defined functions can 
 be used as aggregation functions.
 DataFrame.agg({'Col_name1': ['sum', 'min', 'max'], 'Col_name2': 'count'})
+
+30. Difference between merge() and concat()
+Ans: The following table shows the difference between merge() and concat():
+
+        merge                        concat    
+merges only two common            concats more than one df along with axis
+columns
+
+columns going to be joined         by default performance row-wise 
+must be specified
