@@ -439,3 +439,8 @@ columns
 
 columns going to be joined         by default performance row-wise 
 must be specified
+
+31. Difference between map(), applymap(), and apply()
+map - for series
+applymap() - for df 
+apply() - applies transformation on row and column wise.
