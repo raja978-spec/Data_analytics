@@ -291,4 +291,17 @@ a=np.array([1,2,-43,2])
 b=ma.masked_equal(a,-43) # masked the value which is equal to -43
 print(b)
 
-
+29. What are some of the limitations of NumPy.
+NumPy is a powerful library for numerical and scientific 
+computing in Python but it have some limitations depending on 
+some requirements. Here are some of the limitations of NumPy.
+Homogeneous Data Types
+Memory Usage
+Single-threaded
+Limited Support for Missing Data
+Limited Support for Labeling Data
+Limited Support for Advanced Statistics
+Performance Overheads for Small Arrays
+Limited Support for GPU Acceleration
+Complex Installation for Some Platforms
+Limited Support for Distributed Computing
