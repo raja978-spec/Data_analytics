@@ -444,3 +444,12 @@ must be specified
 map - for series
 applymap() - for df 
 apply() - applies transformation on row and column wise.
+
+32. Difference between pivot_table() and group_by()
+| Feature      | `pivot_table()`                                     | `groupby()`                                          |
+| ------------ | --------------------------------------------------- | ---------------------------------------------------- |
+| Purpose      | Reshapes and summarizes data in a tabular format    | Groups data by one or more columns and aggregates it |
+| Use Case     | Comparing data across multiple dimensions           | Summarizing data within specific groups              |
+| Flexibility  | Handles multiple levels of grouping and aggregation | Creates a GroupBy object for applying aggregation    |
+| Output Style | Pivoted, spreadsheet-style format                   | Flat, grouped summary table                          |
+

@@ -2218,5 +2218,59 @@ min      2
 max     12
 '''
 
+#                   GROUP_BY
+'''
+
+Used to separate categorical values in a column by combining all
+the similar categories. And applies some aggregation function, it
+returns the result as series.
+
+import pandas as pd
+
+data = {
+    'Department': ['Sales', 'Sales', 'HR', 'HR', 'IT'],
+    'Salary': [3000, 4000, 3500, 3000, 5000]
+}
+
+df = pd.DataFrame(data)
+# Group by Department and get average salary
+df.groupby('Department')['Salary'].mean()
+
+OUTPUT:
+Department
+HR       3250.0
+IT       5000.0
+Sales    3500.0
+Name: Salary, dtype: float64
+'''
+
+#              PIVOT TABLE
+'''
+This is also like group by, but it returns 2D dataframe results
 
 
+SYNTAX:
+df.pivot_table(index='row_group', columns='column_group', values='data', aggfunc='sum')
+
+
+EX:
+data = {
+    'Department': ['Sales', 'Sales', 'HR', 'HR', 'IT'],
+    'Gender': ['M', 'F', 'F', 'M', 'M'],
+    'Salary': [3000, 4000, 3500, 3000, 5000]
+}
+
+df = pd.DataFrame(data)
+
+# Pivot table: Average salary by Department and Gender
+df.pivot_table(index='Department', columns='Gender', values='Salary', aggfunc='mean')
+
+
+OUTPUT:
+Gender        F       M
+Department            
+HR        3500.0  3000.0
+IT           NaN  5000.0
+Sales     4000.0  3000.0
+
+'''
