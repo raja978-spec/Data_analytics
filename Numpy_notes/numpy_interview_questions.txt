@@ -305,3 +305,7 @@ Performance Overheads for Small Arrays
 Limited Support for GPU Acceleration
 Complex Installation for Some Platforms
 Limited Support for Distributed Computing
+
+30. How do you sort a NumPy array in ascending or descending order?
+np.sort(numpy_array) for ascending
+np.argsort(numpy_array) for descending
