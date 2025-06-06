@@ -2246,31 +2246,71 @@ Name: Salary, dtype: float64
 
 #              PIVOT TABLE
 '''
-This is also like group by, but it returns 2D dataframe results
-
-
-SYNTAX:
-df.pivot_table(index='row_group', columns='column_group', values='data', aggfunc='sum')
-
+This is also like group by, but it returns 2D dataframe results,
+It is like excel pivot table, groups and summarize more than one 
+column.
 
 EX:
-data = {
-    'Department': ['Sales', 'Sales', 'HR', 'HR', 'IT'],
-    'Gender': ['M', 'F', 'F', 'M', 'M'],
-    'Salary': [3000, 4000, 3500, 3000, 5000]
-}
+import pandas as pd
+df = pd.DataFrame({
+    'A': ['John', 'Boby', 'Mina', 'Peter', 'Nicky'],
+    'B': ['Masters', 'Graduate', 'Graduate', 'Masters', 'Graduate'],
+    'C': [27, 23, 21, 23, 24]
+})
 
-df = pd.DataFrame(data)
 
-# Pivot table: Average salary by Department and Gender
-df.pivot_table(index='Department', columns='Gender', values='Salary', aggfunc='mean')
+#below code groups data be two column index
 
+table = pd.pivot_table(df, index=['A', 'B']) 
+print(table)
 
 OUTPUT:
-Gender        F       M
-Department            
-HR        3500.0  3000.0
-IT           NaN  5000.0
-Sales     4000.0  3000.0
+#here two column index are changed to row index
 
+                   C
+A     B
+Boby  Graduate  23.0
+John  Masters   27.0
+Mina  Graduate  21.0
+Nicky Graduate  24.0
+Peter Masters   23.0
+'''
+
+#             MELT
+'''
+pandas.melt()
+Used to: Convert wide format to long format.
+
+Think of it as: "Unpivoting" your DataFrame — making columns into rows.
+So it reduces the no of columns in df
+
+SYNTAX:
+pd.melt(frame, id_vars=None, value_vars=None, var_name=None, value_name='value')
+
+EX:
+import pandas as pd
+
+df = pd.DataFrame({
+    'Name': ['Alice', 'Bob'],
+    'Math': [85, 90],
+    'Science': [92, 88]
+})
+
+print("Original:\n", df)
+
+melted = pd.melt(df, id_vars='Name', var_name='Subject', value_name='Score')
+print("\nMelted:\n", melted)
+
+OUTPUT:
+Original:
+    Name  Math  Science
+0  Alice    85       92
+1    Bob    90       88
+
+Melted:
+    Name  Subject  Score
+0  Alice     Math     85
+1    Bob     Math     90
+2  Alice  Science     92
+3    Bob  Science     88
 '''

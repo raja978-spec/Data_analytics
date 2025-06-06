@@ -453,3 +453,37 @@ apply() - applies transformation on row and column wise.
 | Flexibility  | Handles multiple levels of grouping and aggregation | Creates a GroupBy object for applying aggregation    |
 | Output Style | Pivoted, spreadsheet-style format                   | Flat, grouped summary table                          |
 
+32. How can we use Pivot and Melt Data in Pandas?
+Ans: We can pivot the dataframe in Pandas by using the 
+pivot_table() method. To unpivot the dataframe to its original 
+form we can melt the dataframe by using the melt() method.
+| Feature           | `melt()`                          | `pivot_table()`                          |
+| ----------------- | --------------------------------- | ---------------------------------------- |
+| Format conversion | Wide → Long                       | Long → Wide                              |
+| Use case          | Flatten multiple columns into two | Rearrange rows into columns              |
+| Aggregation       | ❌ No aggregation                  | ✅ Supports aggregation (e.g., mean, sum) |
+| Common usage      | Data normalization                | Data summarization                       |
+
+📊 What is Wide Format?
+Each subject/variable has its own column.
+Each row usually represents a single observation/unit.
+Easy for humans to read, often how spreadsheets are structured.
+| Name  | Math | Science | English |
+| ----- | ---- | ------- | ------- |
+| Alice | 85   | 92      | 78      |
+| Bob   | 90   | 88      | 84      |
+
+📈 What is Long Format?
+Variables are stored in a single column (e.g., "Subject"), and their values in another (e.g., "Score")
+More rows, but fewer columns.
+Preferred for data analysis, grouping, and visualization.
+| Name  | Subject | Score |
+| ----- | ------- | ----- |
+| Alice | Math    | 85    |
+| Bob   | Math    | 90    |
+| Alice | Science | 92    |
+| Bob   | Science | 88    |
+| Alice | English | 78    |
+| Bob   | English | 84    |
+
+
