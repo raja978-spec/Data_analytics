@@ -283,6 +283,9 @@ OUTPUT:
 '''
 Helps to replace values with some condition
 
+And also it helps to access the numpy array elements
+with index
+
 import numpy as np 
 a=np.array([[1,2],[3,4],[5,6],[7,8]],
 dtype=np.float64
@@ -412,3 +415,103 @@ print(a.astype(float)) # Returns the converted data
 #a.dtype=float
 print(a)
 '''
+
+#           CONCATENATE IN NP
+'''
+Are helps to concatenate more than two numpy array 
+Adds new array to the end of the original array
+
+import numpy as np
+a=np.array([[1,2,3],[5,6,7]])
+b=np.array([[8,9,10],[11,12,13]])
+c=np.concatenate((a,b), axis=0)
+
+OUTPUT:
+[[ 1  2  3]
+ [ 5  6  7]
+ [ 8  9 10]
+ [11 12 13]]
+
+
+d=np.concatenate((a,b), axis=1) # On this first row each concat as first array
+print(d)
+
+OUTPUT:
+[[ 1  2  3  8  9 10]
+ [ 5  6  7 11 12 13]]
+'''     
+
+
+#                HSTACK
+'''
+Converts data to horizontal, axis cannot be used here
+
+'''
+#               DSTACK
+'''
+Takes first row's first element of numpy array, axis cannot be used here
+
+'''
+
+#             SPLIT
+'''
+Splits the array in specified shape
+
+import numpy as np
+a= np.array([1,2,3,4,5,6])
+b=np.array_split(a,3) # splits one array as 3 array
+print(b)
+
+OUTPUT:
+[array([1, 2]), array([3, 4]), array([5, 6])]
+'''
+
+#         VIEW IN NUMPY
+'''
+Same as numpy array copy but changes made in view array
+will changes the original array.
+
+EX:
+import numpy as np
+a=np.array([[1,3,4],[4,5,6]])
+b=a.view()
+b[0,1]=42
+print(a)
+
+OUTPUT:
+[[ 1 42  4]
+ [ 4  5  6]]
+'''
+
+#            3D ARRAY
+'''
+axis-0: Operates along row
+axis-1: Operated along column
+axis-2: Operates along column depth
+'''
+
+#           NDITER
+'''
+nditer are helps iterate over n dim array
+without this we need to give two for loop to
+print the element in n dim arrya.
+
+import numpy as np
+a=np.array([[1,3,4],[4,5,6]])
+
+for i in np.nditer(a):
+    print(i)
+
+OUTPUT:
+1
+3
+4
+4
+5
+6
+'''
+import numpy as np
+a=np.array([[1,3,4],[4,5,6]])
+b=a.view()
+b[0,1]=42
+print(a)
