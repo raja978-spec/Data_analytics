@@ -309,3 +309,10 @@ Limited Support for Distributed Computing
 30. How do you sort a NumPy array in ascending or descending order?
 np.sort(numpy_array) for ascending
 np.argsort(numpy_array) for descending
+
+31 How to use NumPy with Matplotlib?
+NumPy provides powerful array manipulation capabilities, and Matplotlib is a popular library for creating various types of plots and charts. Here's how you can use NumPy with Matplotlib:
+x = np.linspace(0, 2 * np.pi, 100) 
+y = np.sin(x) 
+# Create a basic line plot
+plt.plot(x, y)
