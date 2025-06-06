@@ -451,6 +451,24 @@ Converts data to horizontal, axis cannot be used here
 '''
 Takes first row's first element of numpy array, axis cannot be used here
 
+EX:
+import numpy as np
+a=[1,3,4]
+b=[4,5,6]
+c=np.vstack((a,b)) 
+d=np.hstack((a,b))
+e=np.dstack((a,b))
+print(c)
+print(d)
+print(e)
+
+OUTPUT:
+[[1 3 4]
+ [4 5 6]]
+[1 3 4 4 5 6]
+[[[1 4]
+  [3 5]
+  [4 6]]]
 '''
 
 #             SPLIT
@@ -511,7 +529,11 @@ OUTPUT:
 6
 '''
 import numpy as np
-a=np.array([[1,3,4],[4,5,6]])
-b=a.view()
-b[0,1]=42
-print(a)
+a=[1,3,4]
+b=[4,5,6]
+c=np.vstack((a,b)) 
+d=np.hstack((a,b))
+e=np.dstack((a,b))
+print(c)
+print(d)
+print(e)
