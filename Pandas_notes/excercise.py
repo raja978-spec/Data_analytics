@@ -10,6 +10,8 @@ exam_data={
 labels = ["A","B",'C','D','E','F','G','H','I','J']
 
 df = pd.DataFrame(exam_data,index=labels)
+print(df['qualify'].describe())
+
 df=df.reindex(columns=['score','qualify','new_column'],
               labels=['A','B','new_row'])
 print(df.to_string())

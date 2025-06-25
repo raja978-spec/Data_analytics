@@ -175,6 +175,25 @@ OUTPUT:
  [ 0 10  0]
  [ 0  0 11]]
 
+                           ACCESSING DIAGONAL ELEMENTS
+                           
+import numpy as np
+towD= np.array([[1,2,3],
+             [4,5,6],
+             [7,8,9]])
+diagonal = np.diag(towD)
+print(diagonal)
+oneD = np.array([1,2,3])
+element = np.diag(oneD)
+print(element)
+
+# k=0 is the main diagonal (default)
+# k>0 is above the main diagonal
+# k<0 is below the main diagonal
+above_diagnal = np.diag(towD, k=1)
+print(above_diagnal)
+
+
 nump3 =  np.random.random(10) # randomly generates 10 floating
                               # numbers while arange creates 
                               # whole number
@@ -528,12 +547,33 @@ OUTPUT:
 5
 6
 '''
+
+#               ASTYPE, EQUAL, MOD, ISCLOSE, ROUND
+'''
+
 import numpy as np
-a=[1,3,4]
-b=[4,5,6]
-c=np.vstack((a,b)) 
-d=np.hstack((a,b))
-e=np.dstack((a,b))
-print(c)
-print(d)
-print(e)
+A = np.array([[1, 2.0], [3.31, 4], [5.24, 6]])
+print(A.astype(int))
+print(A.round(0))
+
+# mod will gives you the remainder of each values in A 
+# divided by 2
+print(np.equal(np.mod(A,2),0))
+print(0.1+0.2==0.3) # This will be considered as false in python
+# That is why isclose() used
+print(np.isclose(0.1+0.2,0.3))
+
+
+OUTPUT:
+[[1 2]
+ [3 4]
+ [5 6]]
+[[1. 2.]
+ [3. 4.]
+ [5. 6.]]
+[[False  True]
+ [False  True]
+ [False  True]]
+False
+True
+'''

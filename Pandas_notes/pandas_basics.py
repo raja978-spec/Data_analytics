@@ -80,6 +80,41 @@ print(books_df.shape) # gives me no of rows and columns
 
 '''
 
+#            USE OF DESCRIBE IN STRING DATA
+'''
+when we use it with string it will returns following
+summary results.
+
+| Metric   | Meaning                          |
+| -------- | -------------------------------- |
+| `count`  | Total number of non-null entries |
+| `unique` | Number of unique values          |
+| `top`    | Most frequent (mode) value       |
+| `freq`   | Frequency of the top value       |
+
+
+import numpy as np
+import pandas as pd
+ss=['y','n','y','n','n','y','y','n','n','y']
+exam_data={
+    'name':['a','a','s','r','l','m','r','k','b','c'],
+    'score':[15.5,9,16.5,np.nan,9,50,17,np.nan,8,20],
+    'attempts':[1,3,2,3,2,3,1,1,2,1],
+    'qualify':['y','n','y','n','n','y','y','n','n','y']
+}
+labels = ["A","B",'C','D','E','F','G','H','I','J']
+
+df = pd.DataFrame(exam_data,index=labels)
+print(df['qualify'].describe())
+
+OUTPUT:
+count     10
+unique     2
+top        y
+freq       5
+Name: qualify, dtype: object
+'''
+
 #               EXTRACT SINGLE COLUMN
 '''
 import pandas as pd
@@ -2313,4 +2348,28 @@ Melted:
 1    Bob     Math     90
 2  Alice  Science     92
 3    Bob  Science     88
+'''
+
+#       PLOTING IN PANDAS
+'''
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+data = {'col1':np.arange(start=5, stop=10, dtype=int)}
+data = pd.DataFrame(data)
+data['col1'].plot.hist(bins=10)
+plt.show()
+'''
+
+#     SORT VALUES 
+'''
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+data = {'col1':np.arange(start=10, stop=5, step=-1)}
+data = pd.DataFrame(data)
+print(data)
+print('---------------')
+print(data.sort_values(by='col1'))
+
 '''
