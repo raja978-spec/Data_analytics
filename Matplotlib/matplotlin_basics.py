@@ -1,13 +1,13 @@
 #                     WHAT IS MATPLOTLIB
-'''
+"""
 It is a basics low level visualization library, because it needs more
 effort to create a good visual chart, since it has alot of options to
 edit each part of the chart. While seaborn has default theme for it's
 chart.
-''' 
+"""
 
 #                     PLOT
-'''
+"""
 
 * Plot is used to draw point in a diagram
 * Default it draws line between two points
@@ -28,10 +28,10 @@ y_point=np.array([10,50])
 plt.plot(x_point, y_point)
 plt.show()
 
-'''
+"""
 
 #                   ADD STYLES TO THE PLOT CHART
-'''
+"""
 
 In third argument it takes all the argument related to customize the
 drawings on graph
@@ -90,10 +90,10 @@ plt.plot(x_point, y_point,'o-g',linewidth=6,
 plt.show()
 
 
-'''
+"""
 
 #                  DEFAULT VALUE OF X
-'''
+"""
 If we do not specify the points on the x-axis, they will get the 
 default values 0, 1, 2, 3 etc., depending on the length of the 
 y-points.
@@ -110,10 +110,10 @@ plt.plot(y_point, 'sc',
          markersize=10)
 plt.show()
 
-'''
+"""
 
 #                    MARKER, SHORT HAND ARGUMENT
-'''
+"""
 ms- is the short hand prop of marker size attribute
 mfc - Marker face color
 mec - marker edge color
@@ -158,10 +158,10 @@ plt.plot(x_point, y_point,marker='*', ms='20')
 plt.show()
 
 
-'''
+"""
 
 #                   LINESTYLE ls, color c
-'''
+"""
 ls- used to specify line style
 color or c - used to specify the color of the line
 
@@ -181,11 +181,11 @@ y_point=np.array([10,50])
 plt.plot(x_point, y_point, ls='dotted')
 plt.show()
 
-'''
+"""
 
 
 #          DRAW TWO OR MORE PLOT IN SAME GRAPH
-'''
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -204,10 +204,10 @@ plt.plot(z_point)
 
 plt.show()
 
-'''
+"""
 
 #    XLABEL, YLABEL, TITLE, Font_dict attribute, TITLE alignment with loc
-'''
+"""
 
 AXIS LABELS:
 
@@ -277,10 +277,10 @@ plt.xlabel('X Axis')
 plt.ylabel('Y Axis')
 plt.show()
 
-'''
+"""
 
 #            ADDING GRID LINE TO PLOT
-'''
+"""
 With Pyplot, you can use the grid() function to add grid lines 
 to the plot.
 
@@ -303,12 +303,12 @@ plt.plot(x_point, y_point, z_point,
 plt.grid(axis='x', c='yellow', lw='3')
 plt.show()
 
-'''
+"""
 
 
 #                   SUBPLOT WITH SUPTITLE
 
-'''
+"""
  In Matplotlib, subplots allow you to create multiple plots 
  (charts, graphs, or visualizations) within a single figure. 
  This is especially useful when you want to compare multiple datasets 
@@ -337,11 +337,11 @@ plt.suptitle('Whole analysis') # Adds title to whole chart
 plt.tight_layout()
 plt.show()
  
-'''
+"""
 
 #               SUBPLOTS AND FIGSIZE
 
-'''
+"""
 
  The mani difference between subplot and subplots is in subplot
  we need to access each plot's index by specifying it's index, but in
@@ -394,10 +394,10 @@ axes[1,1].set_title('Analysis 4')
 plt.show()
 
 
-'''
+"""
 
 #               SUBPLOT WITH SINGLE ARGUMENT
-'''
+"""
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -413,10 +413,10 @@ with sns.axes_style('darkgrid'):
 plt.subplot(212) # again created one char next to the previuos chart
 plot()
 plt.show()
-'''
+"""
 
 #         SCATTER PLOT
-'''
+"""
 Helps to compare two variable's relationship
 
 The scatter() function plots one dot for each observation. 
@@ -454,10 +454,102 @@ plt.scatter(x_point, y_point)
 
 plt.show()
 
-'''
+
+     DIFFERENCE BETWEEN LINE AND SCATTER PLOT
+     
+Line is of continous values to show trend over period. 
+
+So why we can't use line instead of scater?
+
+EX:
+    
+import matplotlib.pyplot as plt
+
+students = ["A", "B", "C", "D", "E"]
+scores = [85, 90, 78, 88, 92]
+
+plt.plot(students, scores, marker="o")  # Line plot
+plt.title("Exam Scores (Misleading Line Plot)")
+plt.xlabel("Students")
+plt.ylabel("Scores")
+plt.show()
+
+👉 Here, connecting A → B → C → D → E suggests there is a trend or continuity between students, which doesn’t exist (students are just categories).
+👉 The order of categories must have meaning for a line plot. so we can move scatter
+
+
+
+           DIFFERENCE FOR BAR AND SCATTER
+
+Bar chart → Better for category vs single value (clear comparisons).
+
+Scatter plot → Better when you have two numeric variables and want to study the 
+relationship (not just compare categories).
+
+
+EX:
+    
+import matplotlib.pyplot as plt
+
+hours_studied = [1, 2, 3, 4, 5, 6, 7, 8]
+exam_scores   = [35, 40, 50, 55, 60, 70, 78, 85]
+
+plt.scatter(hours_studied, exam_scores)
+plt.title("Scatter Plot - Hours Studied vs Exam Score")
+plt.xlabel("Hours Studied")
+plt.ylabel("Exam Score")
+plt.show()
+
+👉 Why we can't use bar Here:
+
+Both axes are numeric.
+
+Scatter shows the relationship (positive correlation: more hours → higher score).
+
+A bar chart would just put bars side by side and lose the pattern/relationship.
+
+🔑 Why scatter is better here:
+
+You can see the trend (upward slope).
+
+You can spot outliers (like a student who studied a lot but scored low).
+
+You can later add a regression line to quantify the relationship.
+
+
+                        EXAMPLE FOR OUTLIER:
+
+                            
+import matplotlib.pyplot as plt
+
+# Hours studied (x) vs exam scores (y)
+hours_studied = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+exam_scores   = [30, 40, 50, 55, 65, 70, 78, 82, 20]  # last point is an outlier
+
+plt.scatter(hours_studied, exam_scores, color="blue")
+plt.title("Scatter Plot - Hours Studied vs Exam Score (with Outlier)")
+plt.xlabel("Hours Studied")
+plt.ylabel("Exam Score")
+
+# Highlight outlier
+plt.scatter(9, 20, color="red", s=100, label="Outlier")
+plt.legend()
+
+plt.show()
+
+
+👉 Here:
+
+Most points show a positive relationship (more hours studied → higher score).
+
+The last student studied 9 hours but scored only 20 → that’s an outlier, 
+and scatter plot makes it immediately visible.
+
+"""
+
 
 #        SPECIFYING COLORS FOR EACH DOT IN SCATTER PLOT
-'''
+"""
 import matplotlib.pyplot as plt 
 import numpy as np
 
@@ -469,10 +561,10 @@ plt.scatter(x, y, c=colors)
 plt.show()
 
 # length of the colour array should be same as the axis data length
-'''
+"""
 
 #           COLOR MAPS(cmap) ATTRIBUTE IN SCATTER PLOT
-'''
+"""
 The Matplotlib module has a number of available colormaps.
 
 A colormap is like a list of colors, where each color has a 
@@ -480,10 +572,10 @@ value that ranges from 0 to 100.
 
 This colormap is called 'viridis' and as you can see it ranges 
 from 0, which is a purple color, up to 100, which is a yellow color.
-'''
+"""
 
 #              CHANGING SIZE OF EACH POINT IN SCATTER PLOT
-'''
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -494,10 +586,10 @@ size = np.array([0, 10, 20, 30, 40, 45, 50, 55, 60, 70, 80, 90, 100])
 plt.scatter(x, y,s=size)
 
 plt.show()
-'''
+"""
 
 #       MAKE TRANSPARENCY EFFECT TO EACH DOTS WITH ALPHA ATTRIBUTE
-'''
+"""
 Alpha
 
 You can adjust the transparency of the dots with the alpha argument.
@@ -512,10 +604,10 @@ t = np.array([0, 10, 20, 30, 40, 45, 50, 55, 60, 70, 80, 90, 100])
 plt.scatter(x, y,alpha=0.5)
 
 plt.show()
-'''
+"""
 
 #        COMBINING COLOR MAP, SIZE, ALPHA
-'''
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -529,11 +621,11 @@ plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='nipy_spectral')
 plt.colorbar()
 
 plt.show()
-'''
+"""
 
 #                 BAR CHART
 #           This will not allows all the short hand prop of plot
-'''
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -542,10 +634,19 @@ y = np.random.randint(100, size=(3))
 plt.bar(x,y,width=0.2)
 plt.show()
 
-'''
+
+WHEN TO USE BAR PLOT
+
+* You want to compare values across categories 
+  (e.g., sales by product, marks by student).
+
+* The data is discrete / categorical (not continuous 
+                                    like time series).
+
+"""
 
 #          HORIZONDAL BAR CHART
-'''
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -554,13 +655,15 @@ y = np.random.randint(100, size=(3))
 plt.barh(x,y, color='r')
 plt.show()
 
-'''
+"""
 
 #                HISTOGRAM
-'''
+"""
 
 Helps to check the frequency or range of particular number for large numeric 
-dataset
+dataset, so it Shows the distribution of continuous data 
+by grouping values into bins
+
 
 EX: how many peoples have height from 140, 145
 
@@ -575,6 +678,52 @@ plt.show()
                   BINS in HISTOGRAM
 
 Helps to control the frequency or range of the dataset
+
+Bins are automatically using numpy auto statergy, it applies
+different different methods to find the best bin
+
+
+EX:
+    
+import matplotlib.pyplot as plt
+
+data = [1,2,2,3,3,3,4,4,5,6,7,8,9,10]
+plt.hist(data)   # bins chosen automatically
+plt.show()
+
+
+EXPLANATION ABOVE CHART:
+
+1. What bins mean
+
+The x-axis is split into intervals (bins).
+
+Each bar shows how many data points fall into that interval.
+
+For example:
+
+Bin 1–2 → count how many values are in this range.
+
+Bin 2–3 → count values in this range.
+
+…and so on.
+
+2. Why the bars have different heights
+
+The height of each bar = frequency (number of values inside that bin).
+
+Example: If you had data like [1, 2, 2, 3, 3, 3, 4, 4, 10]:
+
+3 occurs 3 times → so the bar at bin “around 3” is tallest.
+
+10 occurs once → so the bar at bin “around 10” is small.
+
+3. How bins are chosen automatically
+
+By default, Matplotlib uses NumPy’s “auto” bin rule → it tries to find a “nice” number of bins depending on your data spread and size.
+
+In your case, it split into a few wide bins (like 1–2, 2–3, 3–4, 4–5, and a big one covering 5–10).
+    
 
 🔹 How bins Affects a Histogram
 
@@ -620,10 +769,77 @@ plt.hist([x, y],
 plt.legend(['Group1', 'Group2'])
 plt.show()
 
-'''
+
+              SCENARIOS WHERE WE CAN USE HISTOGRAM
+              
+              
+AGE DISTRIBUTION
+
+👉 This shows how many people fall into each age group (like 18–20, 21–23, etc.).
+
+
+import matplotlib.pyplot as plt
+
+ages = [18, 19, 20, 21, 21, 22, 22, 22, 23, 24, 25, 25, 26, 27, 30]
+
+plt.hist(ages, bins=6, edgecolor="black")
+plt.title("Age Distribution")
+plt.xlabel("Age Range")
+plt.ylabel("Number of People")
+plt.show()
+
+
+EXAM SCORE RANGE
+
+
+  CHANGING DEFAULT Y-AXIS VALUE(FREQUENCY) IN HISTOGRAM
+  
+  
+1. Density - used of probability distribution(0-1)
+
+import matplotlib.pyplot as plt
+
+data = [1,2,2,3,3,3,4,4,5,6,7,8,9,10]
+plt.hist(data, bins=5, density=True, edgecolor="black")
+plt.title("Density (Probability)")
+plt.show()
+
+
+2. custom value with Weight
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = [1,2,2,3,3,3,4,4,5,6,7,8,9,10]
+
+weights = np.ones_like(data) / len(data)   # normalize to 1
+print(weights, len(data), len(weights))
+plt.hist(data, bins=5, weights=weights, edgecolor="black")
+plt.title("Histogram - Percentage")
+plt.ylabel("Percentage")
+plt.show()
+
+
+
+[0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857
+ 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857
+ 0.07142857 0.07142857] 14 14
+
+| Bin           | Count | Weighted sum         |
+| ------------- | ----- | -------------------- |
+| 1 `[1,2.8)`   | 3     | 3 * 0.07143 ≈ 0.214 |
+| 2 `[2.8,4.6)` | 5     | 5 * 0.07143 ≈ 0.357 |
+| 3 `[4.6,6.4)` | 2     | 2 * 0.07143 ≈ 0.143 |
+| 4 `[6.4,8.2)` | 2     | 2 * 0.07143 ≈ 0.143 |
+| 5 `[8.2,10]`  | 2     | 2 * 0.07143 ≈ 0.143 |
+
+"""
+
+
 
 #                FIGURE
-'''
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -636,9 +852,9 @@ plt.hist([x, y],
 plt.legend(['Group1', 'Group2'])
 plt.show()
 
-'''
+"""
 #        XTICKS, ROTATION, TEXT
-'''
+"""
 plt.text(xaxis_location, y_axislocation, text_want_to_put)
 #Helps to put text on graph
 
@@ -655,10 +871,10 @@ for i in range(len(x)):
     plt.text(x[i], y[i], str(y[i]), ha='center', va='bottom')
 plt.show()
 
-'''
+"""
 
 #     XTICKS WITH ha attribute
-'''
+"""
 Helps to control the horizontal space of the ticks
 
 x=list(all_equipment_mean.loc['mean',:].index)
@@ -669,10 +885,10 @@ plt.xticks(rotation=45, ha='right')
 plt.title('Fourth Movement business decision')
 plt.show()
 
-'''
+"""
 
 #   CLA and CLOSE METHOD in PLT
-'''
+"""
 Cla - clear current axis, without this chart data might get 
       overlapped to next charts, so instead of showing single
       analysis on each function first function's
@@ -719,4 +935,58 @@ generate_year_sales_report()
 generate_month_sales_report()
 generate_week_sales_report()
 
+"""
+
+
+#    WHEN TO USE LINE PLOT
 '''
+
+Use line plot for continuous data & trends.
+And To compare trends of multiple datasets across the 
+same continuous variable.
+
+EX:
+
+days = [1, 2, 3, 4, 5, 6, 7]
+city1 = [30, 32, 31, 29, 28, 27, 26]
+city2 = [22, 23, 21, 24, 25, 26, 27]
+
+plt.plot(days, city1, label="City 1")
+plt.plot(days, city2, label="City 2")
+plt.legend()
+plt.title("Temperature Trend")
+plt.xlabel("Days")
+plt.ylabel("Temperature (°C)")
+plt.show()
+
+'''
+
+# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

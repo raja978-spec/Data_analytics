@@ -335,10 +335,30 @@ plt.show()
 '''
 
 
+#                   FACET GRID
+'''
+Helps to visualize and combining categorical values with some column in 
+2D space, that is called grid or facet grid.
 
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+# Load example dataset
+tips = sns.load_dataset("tips")
 
+# Create a FacetGrid to show histograms of total_bill by gender
+g = sns.FacetGrid(tips, col="sex")
+g.map(plt.hist, "total_bill", bins=10)
 
+plt.show()
+
+# Facet by both 'sex' and 'time'
+g = sns.FacetGrid(tips, row="sex", col="time")
+g.map(sns.scatterplot, "total_bill", "tip")
+
+plt.show()
+
+'''
 
 
 
