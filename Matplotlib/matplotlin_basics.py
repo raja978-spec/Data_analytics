@@ -837,7 +837,6 @@ plt.show()
 """
 
 
-
 #                FIGURE
 """
 import matplotlib.pyplot as plt
@@ -939,7 +938,7 @@ generate_week_sales_report()
 
 
 #    WHEN TO USE LINE PLOT
-'''
+"""
 
 Use line plot for continuous data & trends.
 And To compare trends of multiple datasets across the 
@@ -959,34 +958,6 @@ plt.xlabel("Days")
 plt.ylabel("Temperature (°C)")
 plt.show()
 
-'''
+"""
 
-# 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#
